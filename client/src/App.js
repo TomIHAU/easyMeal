@@ -10,6 +10,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 import MainPage from "./pages/MainPage";
+import MealPlan from "./pages/MealPlan";
 import Nav from "./components/Nav";
 
 const httpLink = createHttpLink({
@@ -38,6 +39,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/plan" element={<MealPlan />} />
         </Routes>
       </BrowserRouter>
     </ApolloProvider>
