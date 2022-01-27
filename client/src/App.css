@@ -1,0 +1,144 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  font-family: Montserrat, sans-serif;
+  cursor: default;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+body {
+  margin: 0;
+  height: 100%;
+  background-color: var(--backColor);
+  color: var(--offGrey);
+  font: normal 75% Arial, Helvetica, sans-serif;
+}
+
+.navBar {
+  color: white;
+  background-color: #aa8265;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.navGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+  list-style: none;
+}
+.navSolo a {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+.userNavLinks {
+  font-size: 20px;
+}
+.mainBanner {
+  /* background-image: url("./img/foodTable.jpg"); */
+  background-color: #61dafb;
+  margin: 30px;
+  height: 450px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.mainBannerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.mainImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainImgContainer img {
+  width: auto;
+  max-width: 50%;
+  height: auto;
+  max-height: 380px;
+}
+.firstSales {
+  background-color: #61dafb;
+  margin: 0 30px 30px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.firstSalesLinks {
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.firstSalesLinks img {
+  height: 140px;
+  width: 140px;
+}
