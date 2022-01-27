@@ -1,3 +1,7 @@
+:root {
+  --maincolor: #aa8265;
+}
+
 .App {
   text-align: center;
 }
@@ -58,7 +62,10 @@ code {
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
+  transition: 0.3s;
 }
+div,
+p,
 h1,
 h2,
 h3,
@@ -66,6 +73,9 @@ h4,
 h5,
 h6 {
   margin: 0;
+}
+li {
+  list-style: none;
 }
 body {
   margin: 0;
@@ -77,8 +87,8 @@ body {
 
 .navBar {
   color: white;
-  background-color: #aa8265;
-  padding: 20px;
+  background-color: var(--maincolor);
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -86,11 +96,15 @@ body {
   align-items: center;
 }
 .navGroup {
+  margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 50%;
-  list-style: none;
+}
+
+.navSolo {
+  display: flex;
 }
 .navSolo a {
   color: white;
@@ -141,4 +155,22 @@ body {
 .firstSalesLinks img {
   height: 140px;
   width: 140px;
+}
+.navContent {
+  display: none;
+  background-color: var(--maincolor);
+  position: absolute;
+  padding: 15px;
+  top: 56px;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.navSolo {
+  height: 100%;
+  padding: 21px;
+}
+.navSolo:hover .navContent {
+  transition: 2s;
+  display: block;
 }
