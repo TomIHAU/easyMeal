@@ -77,6 +77,10 @@ h6 {
 li {
   list-style: none;
 }
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
 body {
   margin: 0;
   height: 100%;
@@ -108,11 +112,9 @@ body {
 }
 .navSolo a {
   color: white;
-  cursor: pointer;
-  text-decoration: none;
 }
 .userNavLinks {
-  font-size: 20px;
+  font-size: 25px;
 }
 .mainBanner {
   /* background-image: url("./img/foodTable.jpg"); */
@@ -173,4 +175,59 @@ body {
 .navSolo:hover .navContent {
   transition: 2s;
   display: block;
+}
+.onHoverCus:hover {
+  cursor: pointer;
+}
+
+.loginContainer {
+  background-color: brown;
+  margin: 30px auto;
+  max-width: 800px;
+  height: 500px;
+  display: flex;
+  justify-content: flex-end;
+}
+.loginRight {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#loginForm {
+  background-color: burlywood;
+  width: 50%;
+  padding: 0 3%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#loginForm input {
+  padding: 3px;
+}
+#loginForm button {
+  background-color: darkblue;
+  color: white;
+}
+.loginUnder {
+  text-align: center;
+  width: 100%;
+}
+.day {
+  width: 90%;
+  margin: 20px auto;
+}
+.dayHeader {
+  border-bottom: 1px solid #282c34;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+.dayInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
 }

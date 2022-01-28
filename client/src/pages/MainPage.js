@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function MainPage() {
   return (
@@ -10,7 +11,9 @@ export default function MainPage() {
             lorem ipsum asldkjfgasdlfhlksdj aflaskjdf lskadfjh alsdkf
             jasdlfkjhasd flkasjdfh laskdfj h
           </p>
-          <button>Order Now</button>
+          <Link to="/plan">
+            <button>Order Now</button>
+          </Link>
         </div>
         <div className="mainImgContainer">
           <img src="./img/foodTable.jpg" alt="food pic to make you hungry" />
