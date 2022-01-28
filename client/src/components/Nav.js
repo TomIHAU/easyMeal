@@ -26,8 +26,12 @@ export default function Nav() {
         </li>
       </ul>
       <div className="userNavLinks">
-        <AiOutlineUser />
-        <AiOutlineShoppingCart />
+        <Link to="/login">
+          <AiOutlineUser className="onHoverCus" />
+        </Link>
+        <Link to="/cart">
+          <AiOutlineShoppingCart className="onHoverCus" />
+        </Link>
       </div>
     </div>
   );

@@ -11,19 +11,19 @@ Meal.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    MealName: {
+    mealName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Protein: {
+    protein: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    Fat: {
+    fat: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    Carbs: {
+    carbs: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
