@@ -1,5 +1,8 @@
 :root {
   --maincolor: #aa8265;
+  --rose: #aa1945;
+  --puce: #391306;
+  --quartz: #f9ccd3;
 }
 
 .App {
@@ -90,7 +93,7 @@ body {
 }
 
 .navBar {
-  color: white;
+  color: black;
   background-color: var(--maincolor);
 
   display: flex;
@@ -118,17 +121,74 @@ body {
 }
 .mainBanner {
   /* background-image: url("./img/foodTable.jpg"); */
-  background-color: #61dafb;
+  color: var(--puce);
+  background-color: #e2e8f0;
   margin: 30px;
   height: 450px;
   display: flex;
   justify-content: space-evenly;
 }
 .mainBannerInfo {
+  margin: 0 3%;
+  width: 46%;
+  font-size: 140%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
+
+.mainBannerBtn {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.mainBannerBtn:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.mainBannerBtn:hover {
+  background-color: #2c974b;
+}
+
+.mainBannerBtn:focus {
+  box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
+  outline: none;
+}
+
+.mainBannerBtn:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: default;
+}
+
+.mainBannerBtn:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+}
+
 .mainImgContainer {
   display: flex;
   justify-content: center;
@@ -136,12 +196,14 @@ body {
 }
 .mainImgContainer img {
   width: auto;
-  max-width: 50%;
+  width: 75%;
   height: auto;
-  max-height: 380px;
+  height: 380px;
+  object-fit: cover;
 }
 .firstSales {
-  background-color: #61dafb;
+  color: var(--puce);
+  background-color: #e2e8f0;
   margin: 0 30px 30px;
   height: 300px;
   display: flex;
@@ -181,12 +243,14 @@ body {
 }
 
 .loginContainer {
-  background-color: brown;
+  background-image: url("../public/img/loginBack.jpg");
   margin: 30px auto;
   max-width: 800px;
   height: 500px;
   display: flex;
   justify-content: flex-end;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .loginRight {
   width: 60%;
@@ -197,24 +261,45 @@ body {
   justify-content: center;
 }
 #loginForm {
-  background-color: burlywood;
-  width: 50%;
+  background-color: var(--maincolor);
+  color: var(--puce);
+  width: 240px;
   padding: 0 3%;
   height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
 }
 #loginForm input {
+  text-align: center;
+  color: var(--puce);
   padding: 3px;
+  border: none;
+  border-bottom: 2px solid #d1d1d4;
+  background: none;
+  padding: 10px;
+  padding-left: 24px;
+  font-weight: 700;
+  width: 75%;
+  transition: 0.2s;
 }
 #loginForm button {
-  background-color: darkblue;
+  background-color: var(--puce);
   color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 2px;
 }
 .loginUnder {
+  background-color: var(--maincolor);
+  font-size: 15px;
+  color: var(--puce);
   text-align: center;
-  width: 100%;
+  width: calc(240px + 6%);
+  padding-bottom: 3px;
+}
+.loginUnder a {
 }
 .day {
   width: 90%;
@@ -230,4 +315,37 @@ body {
   display: flex;
   justify-content: space-between;
   width: 40%;
+}
+.dayMeals {
+  display: flex;
+  justify-content: space-between;
+}
+.planMeal {
+  height: 300px;
+  width: 150px;
+  margin: 10px 5px;
+  -webkit-box-shadow: 1px 0px 15px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 0px 15px 6px rgba(0, 0, 0, 0.4);
+}
+.planMealTop {
+  height: 150px;
+}
+.planMealTop img {
+  height: 150px;
+  width: 150px;
+}
+.planMealBot {
+  height: 150px;
+}
+.planMealBotHeader {
+  margin: 3px 3px 40px;
+}
+.planMealPrice {
+  margin: 8px;
+  font-size: 14px;
+}
+.planMealStats {
+  margin: 0 8px;
+  display: flex;
+  justify-content: space-between;
 }
