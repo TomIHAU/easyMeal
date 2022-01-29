@@ -58,7 +58,7 @@ export default function Login() {
           </form>
           <div className="loginUnder">
             <p>Don't have an account yet?</p>
-            <Link to="signUp">Create an account</Link>
+            <Link to="/signUp">Create an account</Link>
           </div>
         </div>
       </div>

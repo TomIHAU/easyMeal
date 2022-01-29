@@ -55,7 +55,7 @@ export default function MealPlan() {
             </div>
           </div>
           {day.isOpen && (
-            <div className="dayMeals">
+            <div className="dayMeals" style={{ transition: "0.5s" }}>
               {mealsArray.map((meal, index) => (
                 <SinglePlanMeal key={index + day.day} meal={meal} />
               ))}
