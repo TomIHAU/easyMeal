@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_MEALS } from "../utils/queries";
@@ -9,42 +9,58 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 export default function MealPlan() {
   const { loading, data } = useQuery(QUERY_MEALS);
 
-  console.log("mealplan page");
-  console.log(data);
-  console.log(loading);
-  const days = [1, 2, 3, 4, 5];
+  const [daysOpen, setDaysOpen] = useState([
+    { day: 1, isOpen: true },
+    { day: 2, isOpen: true },
+    { day: 3, isOpen: true },
+    { day: 4, isOpen: true },
+    { day: 5, isOpen: true },
+  ]);
+
+  console.log("data", data);
+  console.log("loading", loading);
+
   const meals = [1, 2, 3, 4, 5];
 
   useEffect(() => {
-    console.log(data);
-    console.log(loading);
     if (data) {
     }
   }, [data, loading]);
 
   const handleShowDay = (event) => {
-    // event.target
-    console.log("ive been clicked");
+    setDaysOpen(
+      daysOpen.map((day, index) => {
+        if (index == event.target.id) {
+          day.isOpen = !day.isOpen;
+        }
+        return day;
+      })
+    );
   };
 
   return (
     <div className="mealPlan">
-      {days.map((day) => (
-        <div className="day">
+      {daysOpen.map((day, index) => (
+        <div key={day.day} className="day">
           <div className="dayHeader">
-            <h2>Day {day}</h2>
+            <h2>Day {day.day}</h2>
             <div className="dayInfo">
               <p>Cal</p>
               <p>Fat</p>
               <p>Pro</p>
             </div>
-            <BsChevronUp onClick={handleShowDay} />
+
+            <div id={index} onClick={handleShowDay}>
+              {day.isOpen ? <BsChevronUp /> : <BsChevronDown />}
+            </div>
           </div>
-          <div className="dayMeals">
-            {mealsArray.map((meal) => (
-              <SinglePlanMeal meal={meal} />
-            ))}
-          </div>
+          {day.isOpen && (
+            <div className="dayMeals">
+              {mealsArray.map((meal, index) => (
+                <SinglePlanMeal key={index + day.day} meal={meal} />
+              ))}
+            </div>
+          )}
         </div>
       ))}
     </div>

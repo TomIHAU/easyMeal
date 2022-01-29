@@ -20,7 +20,6 @@ server.applyMiddleware({ app });
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Serve up static assets
 app.use("/images", express.static(path.join(__dirname, "../client/images")));
 
 // if (process.env.NODE_ENV === "production") {
