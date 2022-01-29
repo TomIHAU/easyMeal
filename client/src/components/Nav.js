@@ -7,7 +7,7 @@ import PlanNav from "./PlanNav";
 export default function Nav() {
   return (
     <div className="navBar">
-      <h2>appName</h2>
+      <h2>EasyMeal</h2>
       <ul className="navGroup">
         <li className="navSolo">
           <Link to="/plan">plan</Link>

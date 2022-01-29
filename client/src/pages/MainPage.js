@@ -6,13 +6,14 @@ export default function MainPage() {
     <div className="App">
       <div className="mainBanner">
         <div className="mainBannerInfo">
-          <h1>This is great</h1>
+          <h1>EasyMeal, Easy Life</h1>
           <p>
-            lorem ipsum asldkjfgasdlfhlksdj aflaskjdf lskadfjh alsdkf
-            jasdlfkjhasd flkasjdfh laskdfj h
+            EasyMeal is a food delivery service for the truely lazy. A wonderful
+            selection of healthy meals available for low cost with a quality
+            guarantee. Lorem Ipsum amazing food served straight to your door
           </p>
           <Link to="/plan">
-            <button>Order Now</button>
+            <button className="mainBannerBtn">Order Now!</button>
           </Link>
         </div>
         <div className="mainImgContainer">
@@ -23,8 +24,8 @@ export default function MainPage() {
       <div className="firstSales">
         <h2>head for selling the product</h2>
         <p>
-          some sales stuff lorem ipsum asldkfjahslkdfjhsadlkfhalssd dsfa fdas
-          fasf asf
+          Amazing range of lorem ipsum healthy food which our chefs have lorem
+          ipsum amazing!
         </p>
         <div className="firstSalesLinks">
           <img src="./img/foodTable.jpg" alt="food pic to make you hungry" />
