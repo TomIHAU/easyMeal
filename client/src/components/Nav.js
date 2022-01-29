@@ -32,7 +32,7 @@ export default function Nav() {
           </div>
         </li>
         <li className="navSolo">
-          <Link to="/faq">Faq</Link>
+          <Link to="/about">About</Link>
         </li>
       </ul>
       <div className="userNavLinks">
