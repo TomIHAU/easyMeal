@@ -1,10 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai";
+import { TOGGLE_CART } from "../utils/GlobalState/actions";
 import PlanNav from "./PlanNav";
+import Cart from "./Cart";
 
 export default function Nav() {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  function toggleCart() {
+    console.log("hello");
+    console.log(state);
+    dispatch({ type: TOGGLE_CART });
+  }
   return (
     <div className="navBar">
       <h2>EasyMeal</h2>
@@ -29,9 +39,7 @@ export default function Nav() {
         <Link to="/login">
           <AiOutlineUser className="onHoverCus" />
         </Link>
-        <Link to="/cart">
-          <AiOutlineShoppingCart className="onHoverCus" />
-        </Link>
+        <AiOutlineShoppingCart onClick={toggleCart} />
       </div>
     </div>
   );
