@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function About() {
+  const [showContactForm, setShowContactForm] = useState(false);
+  const handleShowContactForm = () => {
+    setShowContactForm(!showContactForm);
+    console.log(showContactForm);
+  };
   return (
     <div className="About">
       <div className="aboutDiv aboutMain">
@@ -20,7 +25,9 @@ export default function About() {
             Delivering meals with a conscience, we are here to guide and inspire
             you on your journey - because it isn't a diet - it's a lifestyle.
           </p>
-          <h3 className="aboutContact">Any Questions Contact us</h3>
+          <h3 className="aboutContact" onClick={handleShowContactForm}>
+            Any Questions Contact us
+          </h3>
         </div>
       </div>
       <div className="aboutDiv aboutFacts">
