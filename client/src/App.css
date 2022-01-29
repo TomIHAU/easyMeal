@@ -318,6 +318,7 @@ body {
 }
 .dayMeals {
   display: flex;
+  justify-content: space-between;
 }
 .planMeal {
   height: 300px;
