@@ -1,4 +1,5 @@
 import "./App.css";
+import StoreProvider from "./utils/GlobalState/Provider";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
@@ -12,9 +13,10 @@ import { setContext } from "@apollo/client/link/context";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import MealPlan from "./pages/MealPlan";
+import FAQ from "./pages/FAQ";
+
 import Nav from "./components/Nav";
 import Cart from "./components/Cart";
-import StoreProvider from "./utils/GlobalState/Provider";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -44,7 +46,7 @@ function App() {
           <Cart />
           <Routes>
             <Route path="/" element={<MainPage />} />
-
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/login" element={<Login />} />
             <Route path="/plan" element={<MealPlan />} />
           </Routes>
