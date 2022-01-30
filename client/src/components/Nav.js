@@ -19,7 +19,7 @@ export default function Nav() {
       </Link>
       <ul className="navGroup">
         <li className="navSolo">
-          <Link to="/plan">plan</Link>
+          <Link to="/ourRange">Meals</Link>
         </li>
         <li className="navSolo">
           <Link to="/">links</Link>
