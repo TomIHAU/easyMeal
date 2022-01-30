@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import ContactForm from "../components/ContactForm";
 
 export default function About() {
   const [showContactForm, setShowContactForm] = useState(false);
   const handleShowContactForm = () => {
     setShowContactForm(!showContactForm);
-    console.log(showContactForm);
   };
   return (
     <div className="About">
+      <ContactForm showContactForm={showContactForm} />
       <div className="aboutDiv aboutMain">
         <img src="/img/foodTable.jpg"></img>
         <div className="aboutText">
