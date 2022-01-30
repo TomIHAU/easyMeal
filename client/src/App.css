@@ -101,7 +101,6 @@ body {
 .navBar {
   color: black;
   background-color: var(--maincolor);
-
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -370,4 +369,25 @@ body {
   width: 100%;
   margin: 10px auto;
   text-align: center;
+}
+#contactForm {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  min-width: 20%;
+  max-width: 30%;
+  height: 60%;
+  color: var(--puce);
+  background-color: var(--quartz);
+  overflow: auto;
+  padding: 20px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  border-bottom-right-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+#contactForm h3 {
+  text-align: center;
+}
+#contactForm input {
 }

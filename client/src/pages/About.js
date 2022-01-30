@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import ContactForm from "../components/ContactForm";
 
 export default function About() {
-  const [showContactForm, setShowContactForm] = useState(false);
+  const [contactForm, setContactForm] = useState({ formOpen: false });
+
   const handleShowContactForm = () => {
-    setShowContactForm(!showContactForm);
+    setContactForm({ ...contactForm, formOpen: !contactForm.formOpen });
   };
+
   return (
     <div className="About">
-      <ContactForm showContactForm={showContactForm} />
+      {contactForm.formOpen && (
+        <ContactForm handleShowContactForm={handleShowContactForm} />
+      )}
+
       <div className="aboutDiv aboutMain">
         <img src="/img/foodTable.jpg"></img>
         <div className="aboutText">

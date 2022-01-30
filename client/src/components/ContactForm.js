@@ -1,14 +1,20 @@
 import React from "react";
-
-const ContactForm = ({ showContactForm }) => {
-  if (!showContactForm) {
-    return <div style={{ display: "none" }}></div>;
-  }
-
+import { AiOutlineClose } from "react-icons/ai";
+const ContactForm = ({ handleShowContactForm }) => {
   return (
-    <div className="contactForm">
-      <h3>You haven't added anything to your contactForm yet!</h3>
-    </div>
+    <form id="contactForm">
+      <AiOutlineClose id="" onClick={handleShowContactForm} />{" "}
+      <h3>Contact Us</h3>
+      <label for="nameInput">Name:</label>
+      <input id="nameInput" type="text" name="name"></input>
+      <label for="emailInput">Email Address:</label>
+      <input id="emailInput" type="email" name="email"></input>
+      <label for="messageInput">Message:</label>
+      <textarea id="messageInput" type="textarea"></textarea>
+      <button className="mainBannerBtn" type="submit">
+        Send
+      </button>
+    </form>
   );
 };
 
