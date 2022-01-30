@@ -248,6 +248,9 @@ body {
 .onHoverCus:hover {
   cursor: pointer;
 }
+.ourRange {
+  margin: 30px;
+}
 
 .loginContainer {
   background-image: url("../public/img/loginBack.jpg");

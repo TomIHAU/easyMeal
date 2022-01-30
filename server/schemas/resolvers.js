@@ -7,7 +7,8 @@ const resolvers = {
   Query: {
     meals: async () => {
       const mealData = await Meal.findAll({});
-      return await mealData.map((Data) => Data.get({ plain: true }));
+      const meals = await mealData.map((Data) => Data.get({ plain: true }));
+      return meals;
     },
   },
 
