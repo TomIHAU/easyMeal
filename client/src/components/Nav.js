@@ -14,7 +14,9 @@ export default function Nav() {
   }
   return (
     <div className="navBar">
-      <h2>EasyMeal</h2>
+      <Link to="/" className="compTitle">
+        EasyMeal
+      </Link>
       <ul className="navGroup">
         <li className="navSolo">
           <Link to="/plan">plan</Link>
