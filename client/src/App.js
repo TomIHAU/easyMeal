@@ -15,6 +15,7 @@ import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import MealPlan from "./pages/MealPlan";
 import OurRange from "./pages/OurRange";
+import SignUp from "./pages/SignUp";
 
 import Nav from "./components/Nav";
 import Cart from "./components/Cart";
@@ -51,6 +52,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/ourRange" element={<OurRange />} />
             <Route path="/plan" element={<MealPlan />} />
+            <Route path="/signUp" element={<SignUp />} />
           </Routes>
         </StoreProvider>
       </BrowserRouter>
