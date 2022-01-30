@@ -251,7 +251,11 @@ body {
 .ourRange {
   margin: 30px;
 }
-
+.mealsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 .loginContainer {
   background-image: url("../public/img/loginBack.jpg");
   margin: 30px auto;
