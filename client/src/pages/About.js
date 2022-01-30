@@ -1,17 +1,34 @@
 import React, { useState } from "react";
-import ContactForm from "../components/ContactForm";
+import AboutForm from "../components/AboutForm";
 
 export default function About() {
-  const [contactForm, setContactForm] = useState({ formOpen: false });
+  const [contactForm, setContactForm] = useState({
+    formOpen: false,
+    name: "",
+    email: "",
+    text: "",
+  });
 
   const handleShowContactForm = () => {
     setContactForm({ ...contactForm, formOpen: !contactForm.formOpen });
+  };
+  const handleFormChange = (event) => {
+    const { name, value } = event.target;
+
+    setContactForm({
+      ...contactForm,
+      [name]: value,
+    });
   };
 
   return (
     <div className="About">
       {contactForm.formOpen && (
-        <ContactForm handleShowContactForm={handleShowContactForm} />
+        <AboutForm
+          handleShowContactForm={handleShowContactForm}
+          handleFormChange={handleFormChange}
+          contactForm={contactForm}
+        />
       )}
 
       <div className="aboutDiv aboutMain">

@@ -356,6 +356,7 @@ body {
 }
 .aboutDiv img {
   width: 50%;
+  object-fit: cover;
 }
 .aboutText {
   display: flex;
