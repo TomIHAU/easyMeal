@@ -5,14 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai";
 import { TOGGLE_CART } from "../utils/GlobalState/actions";
 import PlanNav from "./PlanNav";
-import Cart from "./Cart";
 
 export default function Nav() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   function toggleCart() {
-    console.log("hello");
-    console.log(state);
     dispatch({ type: TOGGLE_CART });
   }
   return (
@@ -32,7 +29,7 @@ export default function Nav() {
           </div>
         </li>
         <li className="navSolo">
-          <Link to="/faq">Faq</Link>
+          <Link to="/about">About</Link>
         </li>
       </ul>
       <div className="userNavLinks">

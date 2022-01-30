@@ -1,5 +1,11 @@
 :root {
-  --maincolor: #aa8265;
+  /* #ffecda
+#f8d2b0
+#6c89d2
+ */
+  --maincolor: #db7e3b;
+  --mainback: #f8d2b0;
+  --loginback: #aa8265;
   --rose: #aa1945;
   --puce: #391306;
   --quartz: #f9ccd3;
@@ -95,7 +101,6 @@ body {
 .navBar {
   color: black;
   background-color: var(--maincolor);
-
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -122,7 +127,7 @@ body {
 .mainBanner {
   /* background-image: url("./img/foodTable.jpg"); */
   color: var(--puce);
-  background-color: #e2e8f0;
+  background-color: var(--mainback);
   margin: 30px;
   height: 450px;
   display: flex;
@@ -139,7 +144,7 @@ body {
 
 .mainBannerBtn {
   appearance: none;
-  background-color: #2ea44f;
+  background-color: var(--maincolor);
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
@@ -149,10 +154,10 @@ body {
   display: inline-block;
   font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 20px;
-  padding: 6px 16px;
+  padding: 12px 20px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -169,23 +174,14 @@ body {
 }
 
 .mainBannerBtn:hover {
-  background-color: #2c974b;
+  background-color: #dd6b28;
 }
-
 .mainBannerBtn:focus {
-  box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
+  box-shadow: #eb720e66 0 0 0 3px;
   outline: none;
 }
-
-.mainBannerBtn:disabled {
-  background-color: #94d3a2;
-  border-color: rgba(27, 31, 35, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  cursor: default;
-}
-
 .mainBannerBtn:active {
-  background-color: #298e46;
+  background-color: #c2830d;
   box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
 }
 
@@ -203,7 +199,7 @@ body {
 }
 .firstSales {
   color: var(--puce);
-  background-color: #e2e8f0;
+  background-color: var(--mainback);
   margin: 0 30px 30px;
   height: 300px;
   display: flex;
@@ -261,7 +257,7 @@ body {
   justify-content: center;
 }
 #loginForm {
-  background-color: var(--maincolor);
+  background-color: var(--loginback);
   color: var(--puce);
   width: 240px;
   padding: 0 3%;
@@ -292,7 +288,7 @@ body {
   border-radius: 2px;
 }
 .loginUnder {
-  background-color: var(--maincolor);
+  background-color: var(--loginback);
   font-size: 15px;
   color: var(--puce);
   text-align: center;
@@ -350,7 +346,66 @@ body {
   justify-content: space-between;
 }
 
-/* #ffecda
-#f8d2b0
-#6c89d2
-#db7e3b */
+.aboutDiv {
+  background-color: var(--mainback);
+  margin: 30px;
+  padding: 30px;
+  display: flex;
+  -webkit-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.1);
+}
+.aboutDiv img {
+  width: 50%;
+  object-fit: cover;
+}
+.aboutText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 30px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.aboutContact {
+  width: 100%;
+  margin: 10px auto;
+  text-align: center;
+}
+#contactForm {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  min-width: 20%;
+  max-width: 30%;
+  height: 60%;
+  color: var(--puce);
+  background-color: var(--quartz);
+  overflow: auto;
+  padding: 20px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  border-bottom-right-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#contactForm h3 {
+  text-align: center;
+}
+#aboutClose {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+#contactForm textarea {
+  resize: none;
+  height: 50%;
+}
+.aboutInput {
+  border: 1px solid black;
+  background-color: #dbd8d8;
+  padding: 5px;
+}
+.aboutInput:focus {
+  background-color: #ffffff;
+  border: 1px solid black;
+}
