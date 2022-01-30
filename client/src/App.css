@@ -274,7 +274,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-#loginForm {
+.userForm {
   background-color: var(--loginback);
   color: var(--puce);
   width: 240px;
@@ -285,7 +285,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
 }
-#loginForm input {
+.userForm input {
   text-align: center;
   color: var(--puce);
   padding: 3px;
@@ -298,7 +298,7 @@ body {
   width: 75%;
   transition: 0.2s;
 }
-#loginForm button {
+.userForm button {
   background-color: var(--puce);
   color: white;
   border: none;
@@ -306,12 +306,19 @@ body {
   border-radius: 2px;
 }
 .loginUnder {
+  height: 40px;
   background-color: var(--loginback);
   font-size: 15px;
   color: var(--puce);
   text-align: center;
   width: calc(240px + 6%);
   padding-bottom: 3px;
+}
+.userForm input::placeholder {
+  color: #d1d1d4;
+}
+#signForm {
+  height: 340px;
 }
 .loginUnder a {
 }

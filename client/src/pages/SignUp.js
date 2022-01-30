@@ -6,7 +6,12 @@ import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 export default function SignUp() {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+    passwordRepeat: "",
+  });
   const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
@@ -36,30 +41,48 @@ export default function SignUp() {
     <div className="loginPage">
       <div className="loginContainer">
         <div className="loginRight">
-          <form id="loginForm" onSubmit={handleFormSubmit}>
-            <h1>Login</h1>
+          <form className="userForm" id="signForm" onSubmit={handleFormSubmit}>
+            <h1>Sign Up</h1>
             <input
-              id="loginEmail"
+              id="signUser"
+              type="text"
+              placeholder="Enter your username"
+              autoComplete="off"
+              name="username"
+              value={formState.username}
+              onChange={handleFormChange}
+            />
+            <input
+              id="signEmail"
               type="email"
               placeholder="Enter your email"
               autoComplete="off"
+              name="email"
+              value={formState.email}
               onChange={handleFormChange}
             />
             <input
-              id="loginPassword"
+              id="signPassword"
               type="password"
               placeholder="Enter your password"
               autoComplete="off"
+              name="password"
+              value={formState.password}
+              onChange={handleFormChange}
+            />
+            <input
+              id="signPasswordCheck"
+              type="password"
+              placeholder="Repeat your password"
+              autoComplete="off"
+              name="passwordRepeat"
+              value={formState.passwordRepeat}
               onChange={handleFormChange}
             />
             <button type="submit" id="btn-sign">
-              SIGN IN
+              SIGN UP
             </button>
           </form>
-          <div className="loginUnder">
-            <p>Don't have an account yet?</p>
-            <Link to="/signUp">Create an account</Link>
-          </div>
         </div>
       </div>
     </div>
