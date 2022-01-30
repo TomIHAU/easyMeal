@@ -73,6 +73,13 @@ code {
   user-select: none;
   transition: 0.3s;
 }
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  cursor: pointer;
+}
 div,
 p,
 h1,
@@ -123,6 +130,10 @@ body {
 }
 .userNavLinks {
   font-size: 25px;
+}
+.compTitle {
+  font-weight: bolder;
+  font-size: 16px;
 }
 .mainBanner {
   /* background-image: url("./img/foodTable.jpg"); */
@@ -237,7 +248,14 @@ body {
 .onHoverCus:hover {
   cursor: pointer;
 }
-
+.ourRange {
+  margin: 30px;
+}
+.mealsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 .loginContainer {
   background-image: url("../public/img/loginBack.jpg");
   margin: 30px auto;

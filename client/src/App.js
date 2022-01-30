@@ -10,10 +10,11 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
+import About from "./pages/About";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import MealPlan from "./pages/MealPlan";
-import About from "./pages/About";
+import OurRange from "./pages/OurRange";
 
 import Nav from "./components/Nav";
 import Cart from "./components/Cart";
@@ -48,6 +49,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/ourRange" element={<OurRange />} />
             <Route path="/plan" element={<MealPlan />} />
           </Routes>
         </StoreProvider>
