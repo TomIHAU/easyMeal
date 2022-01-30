@@ -4,13 +4,17 @@ const AboutForm = ({
   handleShowContactForm,
   handleFormChange,
   contactForm,
+  handleFormSubmit,
 }) => {
   return (
-    <form id="contactForm">
-      <AiOutlineClose id="" onClick={handleShowContactForm} />{" "}
+    <form id="contactForm" onSubmit={handleFormSubmit}>
+      <div id="aboutClose" onClick={handleShowContactForm}>
+        <AiOutlineClose />
+      </div>
       <h3>Contact Us</h3>
       <label for="nameInput">Name:</label>
       <input
+        className="aboutInput"
         id="nameInput"
         type="text"
         name="name"
@@ -19,6 +23,7 @@ const AboutForm = ({
       ></input>
       <label for="emailInput">Email Address:</label>
       <input
+        className="aboutInput"
         id="emailInput"
         type="email"
         name="email"
@@ -27,6 +32,7 @@ const AboutForm = ({
       ></input>
       <label for="messageInput">Message:</label>
       <textarea
+        className="aboutInput"
         id="messageInput"
         type="textarea"
         name="text"

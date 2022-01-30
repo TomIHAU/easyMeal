@@ -20,6 +20,10 @@ export default function About() {
       [name]: value,
     });
   };
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    handleShowContactForm();
+  };
 
   return (
     <div className="About">
@@ -27,6 +31,7 @@ export default function About() {
         <AboutForm
           handleShowContactForm={handleShowContactForm}
           handleFormChange={handleFormChange}
+          handleFormSubmit={handleFormSubmit}
           contactForm={contactForm}
         />
       )}

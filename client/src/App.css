@@ -386,9 +386,26 @@ body {
   border-bottom-right-radius: 0.5rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 #contactForm h3 {
   text-align: center;
 }
-#contactForm input {
+#aboutClose {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+#contactForm textarea {
+  resize: none;
+  height: 50%;
+}
+.aboutInput {
+  border: 1px solid black;
+  background-color: #dbd8d8;
+  padding: 5px;
+}
+.aboutInput:focus {
+  background-color: #ffffff;
+  border: 1px solid black;
 }
