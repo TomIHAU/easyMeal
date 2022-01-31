@@ -9,6 +9,7 @@ export default function OurRange() {
 
   console.log(data);
   const meals = data?.meals;
+  console.log(meals);
   if (loading)
     return (
       <div className="ourRange">

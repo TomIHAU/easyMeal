@@ -395,6 +395,11 @@ body {
   width: 100%;
   margin: 10px auto;
   text-align: center;
+  color: #000;
+}
+.aboutContact:hover {
+  cursor: pointer;
+  color: var(--rose);
 }
 #contactForm {
   position: fixed;
