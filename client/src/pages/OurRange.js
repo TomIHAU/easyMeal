@@ -3,20 +3,20 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_MEALS } from "../utils/queries";
-import { UPDATE_MEALS } from "../utils/GlobalState/actions";
+import {
+  UPDATE_MEALS,
+  UPDATE_PRODUCTS,
+  ADD_TO_CART,
+  UPDATE_CART_QUANTITY,
+} from "../utils/GlobalState/actions";
 import SortSelect from "../components/SortSelect";
 import FilterForm from "../components/FilterForm";
 import SingleMenuMeal from "../components/SingleMenuMeal";
 import MoreDetailsMeal from "../components/MoreDetailsMeal";
 
 function filterResults(arr, args) {
-  console.log("in filter", arr);
-  console.log(args);
   return arr.filter((ele) => {
     for (let i = 0; i < args.length; i++) {
-      console.log(args[i]);
-      console.log(ele.mealName);
-      console.log("should be one", args[i]);
       if (args[i] === ele.mealName) {
         return false;
       }
@@ -49,13 +49,32 @@ export default function OurRange() {
   }, [data, dispatch]);
 
   useEffect(() => {
-    console.log("state.f", state.filters);
-    console.log("state.g", ...state.filters);
     const filtered = filterResults(state.meals, state.filters);
-    console.log("out filter", filtered);
     const sorted = sortResults(filtered, state.sort);
     setSearchResults(sorted);
   }, [state.sort, state.filters, state.meals]);
+
+  const { cart } = state;
+  const addToCart = (meal) => {
+    const itemInCart = cart.find((cartItem) => cartItem.id === meal.id);
+    if (itemInCart) {
+      dispatch({
+        type: UPDATE_CART_QUANTITY,
+        id: meal.id,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      });
+      // idbPromise("cart", "put", {
+      //   ...itemInCart,
+      //   purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      // });
+    } else {
+      dispatch({
+        type: ADD_TO_CART,
+        product: { ...meal, purchaseQuantity: 1 },
+      });
+      // idbPromise("cart", "put", { ...meal, purchaseQuantity: 1 });
+    }
+  };
 
   function handleShowMoreDetails(mealArg) {
     setMoreDetails({
@@ -68,6 +87,7 @@ export default function OurRange() {
     <MoreDetailsMeal
       mealId={MoreDetails.meal}
       setMoreDetails={setMoreDetails}
+      addToCart={addToCart}
     />
   ) : (
     <div className="ourRangeOuter">
@@ -78,11 +98,14 @@ export default function OurRange() {
         <div className="mealsContainer">
           {searchResults.map((meal) => {
             return (
-              <div
-                className="planMeal"
-                onClick={() => handleShowMoreDetails(meal.id)}
-              >
-                <SingleMenuMeal key={meal.id} meal={meal} mealId={meal.id} />
+              <div className="planMeal">
+                <SingleMenuMeal
+                  key={meal.id}
+                  meal={meal}
+                  mealId={meal.id}
+                  addToCart={addToCart}
+                  handleShowMoreDetails={handleShowMoreDetails}
+                />
               </div>
             );
           })}
