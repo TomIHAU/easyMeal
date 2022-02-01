@@ -6,7 +6,6 @@ const AboutForm = ({
   contactForm,
   handleFormSubmit,
 }) => {
-  console.log(contactForm);
   return (
     <form id="contactForm" onSubmit={handleFormSubmit}>
       <div id="aboutClose" onClick={handleShowContactForm}>

@@ -8,6 +8,9 @@ import {
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
   TOGGLE_CART,
+  UPDATE_MEALS,
+  UPDATE_FILTER,
+  UPDATE_SORT,
 } from "./actions";
 
 const initialState = {
@@ -16,6 +19,9 @@ const initialState = {
   cartOpen: false,
   categories: [],
   currentCategory: "",
+  meals: [],
+  filters: [],
+  sort: "",
 };
 
 export default function reducer(state = initialState, action) {
@@ -84,6 +90,21 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         currentCategory: action.currentCategory,
+      };
+    case UPDATE_MEALS:
+      return {
+        ...state,
+        meals: [...action.meals],
+      };
+    case UPDATE_FILTER:
+      return {
+        ...state,
+        filters: [...action.filters],
+      };
+    case UPDATE_SORT:
+      return {
+        ...state,
+        sort: action.sort,
       };
 
     default:

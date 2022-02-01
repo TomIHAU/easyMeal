@@ -28,15 +28,6 @@ export default function MealPlan() {
 
   console.log(data);
 
-  const testasdfsadf = {
-    mealName: "Rice",
-    protein: 40,
-    fat: 30,
-    carbs: 20,
-    price: 9.74,
-    img: "./img/bibimbap.jpg",
-  };
-
   const [daysOpen, setDaysOpen] = useState([
     { day: 1, isOpen: true, meals: [3, 1, 1, 1, 4] },
     { day: 2, isOpen: true, meals: [0, 1, 3, null, 4] },
@@ -53,7 +44,8 @@ export default function MealPlan() {
   const handleShowDay = (event) => {
     setDaysOpen(
       daysOpen.map((day, index) => {
-        if (index === event.target.id) {
+        const id = parseInt(event.target.id);
+        if (index === id) {
           day.isOpen = !day.isOpen;
         }
         return day;
@@ -72,10 +64,19 @@ export default function MealPlan() {
               <p>Fat: {calculateDayTotal(day.meals, "fat")}</p>
               <p>Pro: {calculateDayTotal(day.meals, "protein")}</p>
             </div>
-
-            <div id={index} onClick={handleShowDay}>
-              {day.isOpen ? <BsChevronUp /> : <BsChevronDown />}
-            </div>
+            {day.isOpen ? (
+              <BsChevronUp
+                id={index}
+                onClick={handleShowDay}
+                className="mealPlanShowBtn"
+              />
+            ) : (
+              <BsChevronDown
+                id={index}
+                onClick={handleShowDay}
+                className="mealPlanShowBtn"
+              />
+            )}
           </div>
           {day.isOpen && (
             <div className="dayMeals" style={{ transition: "0.5s" }}>
@@ -97,6 +98,8 @@ export default function MealPlan() {
         <p>carbs:{calculateWeekTotal(daysOpen, "carbs")}</p>
         <p>protein:{calculateWeekTotal(daysOpen, "protein")}</p>
         <p>fat:{calculateWeekTotal(daysOpen, "fat")}</p>
+        <p>total price: ${calculateWeekTotal(daysOpen, "price")}</p>
+        <p>asdfsadfasd</p>
       </div>
     </div>
   );

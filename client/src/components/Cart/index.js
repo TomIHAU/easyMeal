@@ -10,14 +10,15 @@ import {
   TOGGLE_CART,
   ADD_MULTIPLE_TO_CART,
 } from "../../utils/GlobalState/actions";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineClose } from "react-icons/ai";
 import "./style.css";
 
-const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
+// const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 const Cart = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+
   // const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   // useEffect(() => {
@@ -64,7 +65,7 @@ const Cart = () => {
     //   variables: { products: productIds },
     // });
   }
-  console.log(state.cartOpen);
+
   if (!state.cartOpen) {
     return <div style={{ display: "none" }}></div>;
   }
@@ -72,7 +73,7 @@ const Cart = () => {
   return (
     <div className="cart">
       <div className="close" onClick={toggleCart}>
-        [close]
+        <AiOutlineClose style={{ cursor: "pointer" }} />
       </div>
       <h2>Shopping Cart</h2>
       {state.cart.length ? (

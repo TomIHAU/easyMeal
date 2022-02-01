@@ -10,6 +10,11 @@ const resolvers = {
       const meals = await mealData.map((Data) => Data.get({ plain: true }));
       return meals;
     },
+    users: async () => {
+      const userData = await User.findAll({});
+      const users = await userData.map((Data) => Data.get({ plain: true }));
+      return users;
+    },
   },
 
   Mutation: {

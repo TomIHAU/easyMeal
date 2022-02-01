@@ -9,9 +9,11 @@ import PlanNav from "./PlanNav";
 export default function Nav() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+
   function toggleCart() {
     dispatch({ type: TOGGLE_CART });
   }
+
   return (
     <div className="navBar">
       <Link to="/" className="compTitle">
