@@ -10,10 +10,8 @@ export default function Login() {
   const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
-    console.log(event);
     event.preventDefault();
     try {
-      console.log(formState);
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
@@ -36,13 +34,15 @@ export default function Login() {
     <div className="loginPage">
       <div className="loginContainer">
         <div className="loginRight">
-          <form id="loginForm" onSubmit={handleFormSubmit}>
+          <form className="userForm" id="loginForm" onSubmit={handleFormSubmit}>
             <h1>Login</h1>
             <input
               id="loginEmail"
               type="email"
               placeholder="Enter your email"
               autoComplete="off"
+              name="email"
+              value={formState.email}
               onChange={handleFormChange}
             />
             <input
@@ -50,6 +50,8 @@ export default function Login() {
               type="password"
               placeholder="Enter your password"
               autoComplete="off"
+              name="password"
+              value={formState.password}
               onChange={handleFormChange}
             />
             <button type="submit" id="btn-sign">

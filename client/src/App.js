@@ -1,6 +1,9 @@
 import "./App.css";
+
 import StoreProvider from "./utils/GlobalState/Provider";
+
 import React from "react";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   ApolloClient,
@@ -15,6 +18,7 @@ import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import MealPlan from "./pages/MealPlan";
 import OurRange from "./pages/OurRange";
+import SignUp from "./pages/SignUp";
 
 import Nav from "./components/Nav";
 import Cart from "./components/Cart";
@@ -51,6 +55,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/ourRange" element={<OurRange />} />
             <Route path="/plan" element={<MealPlan />} />
+            <Route path="/signUp" element={<SignUp />} />
           </Routes>
         </StoreProvider>
       </BrowserRouter>

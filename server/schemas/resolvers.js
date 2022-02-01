@@ -10,11 +10,18 @@ const resolvers = {
       const meals = await mealData.map((Data) => Data.get({ plain: true }));
       return meals;
     },
+    users: async () => {
+      const userData = await User.findAll({});
+      const users = await userData.map((Data) => Data.get({ plain: true }));
+      return users;
+    },
   },
 
   Mutation: {
     addUser: async (root, args) => {
+      console.log(args);
       const user = await User.create(args);
+      console.log(user);
       const token = signToken(user);
 
       return { token, user };

@@ -18,10 +18,13 @@ const typeDefs = gql`
     protein: Int!
     fat: Int!
     carbs: Int!
+    price: Float!
+    img: String!
   }
 
   type Query {
     meals: [Meal]!
+    users: [User]!
   }
 
   type Mutation {
