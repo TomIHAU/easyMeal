@@ -10,8 +10,13 @@ import SingleMenuMeal from "../components/SingleMenuMeal";
 import MoreDetailsMeal from "../components/MoreDetailsMeal";
 
 function filterResults(arr, args) {
+  console.log("in filter", arr);
+  console.log(args);
   return arr.filter((ele) => {
     for (let i = 0; i < args.length; i++) {
+      console.log(args[i]);
+      console.log(ele.mealName);
+      console.log("should be one", args[i]);
       if (args[i] === ele.mealName) {
         return false;
       }
@@ -44,7 +49,10 @@ export default function OurRange() {
   }, [data, dispatch]);
 
   useEffect(() => {
-    const filtered = filterResults(state.meals, ...state.filters);
+    console.log("state.f", state.filters);
+    console.log("state.g", ...state.filters);
+    const filtered = filterResults(state.meals, state.filters);
+    console.log("out filter", filtered);
     const sorted = sortResults(filtered, state.sort);
     setSearchResults(sorted);
   }, [state.sort, state.filters, state.meals]);

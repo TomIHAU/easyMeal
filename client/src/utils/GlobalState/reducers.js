@@ -49,7 +49,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         cartOpen: true,
         cart: state.cart.map((product) => {
-          if (action._id === product._id) {
+          if (action.id === product.id) {
             product.purchaseQuantity = action.purchaseQuantity;
           }
           return product;
@@ -58,7 +58,7 @@ export default function reducer(state = initialState, action) {
 
     case REMOVE_FROM_CART:
       let newState = state.cart.filter((product) => {
-        return product._id !== action._id;
+        return product.id !== action.id;
       });
 
       return {
@@ -111,7 +111,3 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
-
-// export function useProductReducer(initialState) {
-//   return useReducer(reducer, initialState);
-// }

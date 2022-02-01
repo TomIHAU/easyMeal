@@ -14,7 +14,7 @@ export default function FilterForm() {
     setFormState(new Array(state.meals.length).fill(false));
   }, [state.meals.length]);
 
-  function handleFilter(...args) {
+  function handleFilter(args) {
     dispatch({ type: UPDATE_FILTER, filters: args });
   }
 
