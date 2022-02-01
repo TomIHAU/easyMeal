@@ -47,12 +47,12 @@ export default function FilterForm() {
   //     console.log(formState);
   //     handleFilter(formState);
   //   }, [formState, dispatch]);
-
+  const { meals, filters } = state;
   return (
     <aside>
       <h2>this is to filter stuff</h2>
       <form>
-        {state.meals.map((meal, index) => {
+        {meals.map((meal, index) => {
           return (
             <div>
               <input
@@ -60,6 +60,7 @@ export default function FilterForm() {
                 key={index}
                 id={index}
                 name={meal.mealName}
+                checked={filters === meal.mealName}
                 onChange={(event) => {
                   handleOnChange(event);
                 }}
