@@ -7,30 +7,31 @@ import { UPDATE_FILTER } from "../utils/GlobalState/actions";
 export default function FilterForm() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  console.log(state.meals);
-  const [formState, setFormState] = useState(
-    new Array(state.meals.length).fill(false)
-  );
-  console.log("formstate", formState);
+
+  const [formState, setFormState] = useState([]);
+
+  useEffect(() => {
+    setFormState(new Array(state.meals.length).fill(false));
+  }, [state.meals.length]);
+
   function handleFilter(...args) {
     dispatch({ type: UPDATE_FILTER, filters: args });
   }
-  const handleOnChange = (event) => {
-    const updatedCheckedState = formState.map((item, index) =>
-      index === event.target.id ? (item = !item) : item
-    );
 
-    console.log(event.target.id);
-    console.log(updatedCheckedState);
+  const handleOnChange = (event) => {
+    const id = parseInt(event.target.id);
+    const updatedCheckedState = formState.map((item, index) =>
+      index === id ? (item = !item) : item
+    );
 
     setFormState(updatedCheckedState);
     const filters = updatedCheckedState.reduce((acc, cur, index) => {
       if (cur === true) {
-        return acc.push(state.meals[index].mealName);
+        acc.push(state.meals[index].mealName);
       }
       return acc;
     }, []);
-    console.log(filters);
+
     handleFilter(filters);
   };
   //   function handleFormChange(event) {
@@ -48,7 +49,7 @@ export default function FilterForm() {
   //   }, [formState, dispatch]);
 
   return (
-    <div>
+    <aside>
       <h2>this is to filter stuff</h2>
       <form>
         {state.meals.map((meal, index) => {
@@ -63,11 +64,11 @@ export default function FilterForm() {
                   handleOnChange(event);
                 }}
               ></input>
-              <label for={meal.mealName}>{meal.mealName}</label>
+              <label htmlFor={meal.mealName}>{meal.mealName}</label>
             </div>
           );
         })}
       </form>
-    </div>
+    </aside>
   );
 }

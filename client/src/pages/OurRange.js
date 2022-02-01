@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_MEALS } from "../utils/queries";
@@ -9,6 +7,7 @@ import { UPDATE_MEALS } from "../utils/GlobalState/actions";
 import SortSelect from "../components/SortSelect";
 import FilterForm from "../components/FilterForm";
 import SingleMenuMeal from "../components/SingleMenuMeal";
+import MoreDetailsMeal from "../components/MoreDetailsMeal";
 
 function filterResults(arr, args) {
   return arr.filter((ele) => {
@@ -31,11 +30,10 @@ function sortResults(arr, arg) {
 
 export default function OurRange() {
   const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const [MoreDetails, setMoreDetails] = useState({ show: false, meal: 0 });
 
   const [searchResults, setSearchResults] = useState(state.meals);
-
-  const dispatch = useDispatch();
-
   const { data } = useQuery(QUERY_MEALS);
 
   useEffect(() => {
@@ -46,23 +44,38 @@ export default function OurRange() {
   }, [data, dispatch]);
 
   useEffect(() => {
-    const filtered = filterResults(state.meals, state.filters);
+    const filtered = filterResults(state.meals, ...state.filters);
     const sorted = sortResults(filtered, state.sort);
     setSearchResults(sorted);
   }, [state.sort, state.filters, state.meals]);
 
-  return (
+  function handleShowMoreDetails(mealArg) {
+    setMoreDetails({
+      show: true,
+      meal: mealArg,
+    });
+  }
+
+  return MoreDetails.show ? (
+    <MoreDetailsMeal
+      mealId={MoreDetails.meal}
+      setMoreDetails={setMoreDetails}
+    />
+  ) : (
     <div className="ourRangeOuter">
-      <aside>
-        <FilterForm />
-      </aside>
+      <FilterForm />
       <div className="ourRange">
         <h2>Our Range this is to sort stuff</h2>
         <SortSelect />
         <div className="mealsContainer">
           {searchResults.map((meal) => {
             return (
-              <SingleMenuMeal key={meal.id} meal={meal} mealId={meal.id} />
+              <div
+                className="planMeal"
+                onClick={() => handleShowMoreDetails(meal.id)}
+              >
+                <SingleMenuMeal key={meal.id} meal={meal} mealId={meal.id} />
+              </div>
             );
           })}
         </div>
