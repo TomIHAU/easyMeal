@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_MEALS } from "../utils/queries";
@@ -26,20 +27,13 @@ function calculateWeekTotal(arr, key) {
 export default function MealPlan() {
   const { loading, data } = useQuery(QUERY_MEALS);
 
-  console.log(data);
-
   const [daysOpen, setDaysOpen] = useState([
     { day: 1, isOpen: true, meals: [3, 1, 1, 1, 4] },
     { day: 2, isOpen: true, meals: [0, 1, 3, null, 4] },
-    { day: 3, isOpen: true, meals: [2, null, null, 3, 4] },
+    { day: 3, isOpen: true, meals: [2, 3, 2, 3, 4] },
     { day: 4, isOpen: true, meals: [null, null, null, null, 4] },
     { day: 5, isOpen: true, meals: [null, null, null, null, null] },
   ]);
-
-  useEffect(() => {
-    if (data) {
-    }
-  }, [data, loading]);
 
   const handleShowDay = (event) => {
     setDaysOpen(
@@ -52,6 +46,10 @@ export default function MealPlan() {
       })
     );
   };
+
+  if (loading) {
+    return <p>loading...</p>;
+  }
 
   return (
     <div className="mealPlan">
@@ -82,11 +80,11 @@ export default function MealPlan() {
             <div className="dayMeals" style={{ transition: "0.5s" }}>
               {day.meals.map((meal, index) =>
                 meal === null ? (
-                  <p>this is null</p>
+                  <p>this is null - replace with redirectbutton to menu page</p>
                 ) : (
                   <SinglePlanMeal
                     key={index + day.day}
-                    meal={mealsArray[meal]}
+                    meal={data.meals[meal]}
                   />
                 )
               )}

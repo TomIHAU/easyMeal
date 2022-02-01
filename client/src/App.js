@@ -3,6 +3,7 @@ import "./App.css";
 import StoreProvider from "./utils/GlobalState/Provider";
 
 import React from "react";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   ApolloClient,
