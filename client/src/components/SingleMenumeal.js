@@ -6,7 +6,7 @@ export default function SingleMenuMeal({
   addToCart,
 }) {
   return (
-    <div>
+    <div className="planMeal">
       <div className="planMealTop">
         <img
           src={meal.img}
@@ -26,14 +26,15 @@ export default function SingleMenuMeal({
           <p>F:{meal.fat}</p>
           <p>P:{meal.protein}</p>
         </div>
-        <button
-          className="ourRangeAddBtn"
-          onClick={() => {
-            addToCart(meal);
-          }}
-        >
-          Add to Cart
-        </button>
+        <div className="ourRangeAdd">
+          <button
+            onClick={() => {
+              addToCart(meal);
+            }}
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,44 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiOutlineUser,
+  AiOutlineShoppingCart,
+  AiOutlineMenu,
+} from "react-icons/ai";
 import { FaUserCog } from "react-icons/fa";
 
 import { TOGGLE_CART } from "../utils/GlobalState/actions";
 import Auth from "../utils/auth";
-import PlanNav from "./PlanNav";
+import NavGroup from "./NavGroup";
 
 export default function Nav() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [showNav, setShowNav] = useState(false);
 
+  function handleShowNav() {
+    console.log(showNav);
+    setShowNav(!showNav);
+  }
+
+  useState(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+  });
   function toggleCart() {
     dispatch({ type: TOGGLE_CART });
   }
-
+  //
   return (
     <div className="navBar">
-      <Link to="/" className="compTitle">
-        EasyMeal
-      </Link>
-      <ul className="navGroup">
-        <li className="navSolo">
-          <Link to="/ourRange">Meals</Link>
-        </li>
-        <li className="navSolo">
-          <Link to="/">links</Link>
-        </li>
-        <li className="navSolo navHover">
-          <p>Plans</p>
-          <div className="navContent">
-            <PlanNav />
-          </div>
-        </li>
-        <li className="navSolo">
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
+      {width > 500 ? (
+        <Link to="/" className="compTitle">
+          EasyMeal
+        </Link>
+      ) : (
+        <div>
+          <AiOutlineMenu
+            className="hamburger onHoverCus"
+            onClick={handleShowNav}
+          />
+          {showNav && <NavGroup />}
+        </div>
+      )}
+      {width > 500 ? (
+        <NavGroup />
+      ) : (
+        <Link to="/" className="compTitle">
+          EasyMeal
+        </Link>
+      )}
       <div className="userNavLinks">
         {Auth.loggedIn() ? (
           <Link className="onHoverCus" to="/mydashboard">

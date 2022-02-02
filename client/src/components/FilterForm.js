@@ -9,7 +9,6 @@ export default function FilterForm() {
   const state = useSelector((state) => state);
 
   const [formState, setFormState] = useState([]);
-
   const [showFilter, setShowFilter] = useState(false);
 
   function handleShowFilter() {

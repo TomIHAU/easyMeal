@@ -74,6 +74,7 @@ body {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+  height: 56px;
 }
 .navGroup {
   margin: 0;
@@ -173,20 +174,23 @@ body {
   color: var(--puce);
   background-color: var(--mainback);
   margin: 0 30px 30px;
-  height: 300px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  padding: 13px;
 }
 .firstSalesLinks {
   width: 70%;
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 .firstSalesLinks img {
   height: 140px;
   width: 140px;
+  margin: 3px;
 }
 .navContent {
   display: none;
@@ -230,6 +234,13 @@ body {
 }
 .ourRange {
   height: 100%;
+}
+.ourRangeAdd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  height: 20%;
 }
 .mealsContainer {
   display: flex;
@@ -329,6 +340,9 @@ aside {
   height: 300px;
   width: 150px;
   margin: 10px 5px;
+  display: flex;
+  flex-direction: column;
+
   -webkit-box-shadow: 1px 0px 15px 6px rgba(0, 0, 0, 0.4);
   box-shadow: 1px 0px 15px 6px rgba(0, 0, 0, 0.4);
 }
@@ -336,15 +350,11 @@ aside {
 .mealPlanShowBtn:hover {
   cursor: pointer;
 }
-.planMealTop {
-  height: 150px;
-}
-.planMealTop img {
-  height: 150px;
-  width: 150px;
-}
+.planMealTop,
+.planMealTop img,
 .planMealBot {
   height: 150px;
+  width: 150px;
 }
 .planMealBotHeader {
   margin: 3px 3px 40px;
@@ -426,4 +436,39 @@ aside {
 .aboutInput:focus {
   background-color: #ffffff;
   border: 1px solid black;
+}
+@media screen and (max-width: 768px) {
+  .cart {
+    top: 0;
+    position: relative;
+    display: block;
+    max-width: 100%;
+    max-height: auto;
+    background-color: inherit;
+  }
+}
+@media screen and (max-width: 500px) {
+  .planMeal {
+    height: 150px;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+  }
+  .navBar {
+    justify-content: space-between;
+    padding: 0 5px;
+  }
+  .hamburger {
+    font-size: 30px;
+    cursor: pointer;
+  }
+  .navGroup {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    background-color: #aa1945;
+    flex-direction: column;
+    max-width: 50%;
+    padding: 0;
+  }
 }

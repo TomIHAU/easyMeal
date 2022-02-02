@@ -12,7 +12,7 @@ export default function MainPage() {
             selection of healthy meals available for low cost with a quality
             guarantee. Lorem Ipsum amazing food served straight to your door
           </p>
-          <Link to="/plan">
+          <Link to="/ourRange">
             <button className="mainBannerBtn">Order Now!</button>
           </Link>
         </div>

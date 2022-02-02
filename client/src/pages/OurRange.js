@@ -98,15 +98,13 @@ export default function OurRange() {
         <div className="mealsContainer">
           {searchResults.map((meal) => {
             return (
-              <div className="planMeal">
-                <SingleMenuMeal
-                  key={meal.id}
-                  meal={meal}
-                  mealId={meal.id}
-                  addToCart={addToCart}
-                  handleShowMoreDetails={handleShowMoreDetails}
-                />
-              </div>
+              <SingleMenuMeal
+                key={meal.id}
+                meal={meal}
+                mealId={meal.id}
+                addToCart={addToCart}
+                handleShowMoreDetails={handleShowMoreDetails}
+              />
             );
           })}
         </div>
