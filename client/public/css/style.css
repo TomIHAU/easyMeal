@@ -206,8 +206,23 @@ body {
   transition: 2s;
   display: block;
 }
-.onHoverCus:hover {
+.onHoverCus,
+.onHoverCus *:hover {
   cursor: pointer;
+}
+.showFilterBtn {
+  cursor: pointer;
+  background-color: blue;
+  height: 50px;
+  width: 50px;
+  color: white;
+  font-size: 30px;
+  border-radius: 0 5px 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.filterAside {
 }
 .ourRangeOuter {
   height: 100%;

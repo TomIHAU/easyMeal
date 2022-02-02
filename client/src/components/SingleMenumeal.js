@@ -1,18 +1,18 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 export default function SingleMenuMeal({
   meal,
   handleShowMoreDetails,
   addToCart,
 }) {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-
   return (
     <div>
       <div className="planMealTop">
-        <img src={meal.img} alt={meal.mealName}></img>
+        <img
+          src={meal.img}
+          alt={meal.mealName}
+          onClick={() => handleShowMoreDetails(meal.id)}
+        ></img>
       </div>
       <div className="planMealBot">
         <div className="planMealBotHeader">
@@ -26,10 +26,8 @@ export default function SingleMenuMeal({
           <p>F:{meal.fat}</p>
           <p>P:{meal.protein}</p>
         </div>
-        <button onClick={() => handleShowMoreDetails(meal.id)}>
-          ShowMoreDetails
-        </button>
         <button
+          className="ourRangeAddBtn"
           onClick={() => {
             addToCart(meal);
           }}

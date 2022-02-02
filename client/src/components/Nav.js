@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai";
+import { FaUserCog } from "react-icons/fa";
+
 import { TOGGLE_CART } from "../utils/GlobalState/actions";
+import Auth from "../utils/auth";
 import PlanNav from "./PlanNav";
 
 export default function Nav() {
@@ -37,10 +40,16 @@ export default function Nav() {
         </li>
       </ul>
       <div className="userNavLinks">
-        <Link to="/login">
-          <AiOutlineUser className="onHoverCus" />
-        </Link>
-        <AiOutlineShoppingCart onClick={toggleCart} />
+        {Auth.loggedIn() ? (
+          <Link className="onHoverCus" to="/mydashboard">
+            <FaUserCog className="onHoverCus" />
+          </Link>
+        ) : (
+          <Link className="onHoverCus" to="/login">
+            <AiOutlineUser className="onHoverCus" />
+          </Link>
+        )}
+        <AiOutlineShoppingCart className="onHoverCus" onClick={toggleCart} />
       </div>
     </div>
   );

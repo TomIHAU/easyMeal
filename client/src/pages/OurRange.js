@@ -93,7 +93,7 @@ export default function OurRange() {
     <div className="ourRangeOuter">
       <FilterForm />
       <div className="ourRange">
-        <h2>Our Range this is to sort stuff</h2>
+        <h2>Our Range of meals</h2>
         <SortSelect />
         <div className="mealsContainer">
           {searchResults.map((meal) => {
