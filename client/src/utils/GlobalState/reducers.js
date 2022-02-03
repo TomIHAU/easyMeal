@@ -11,6 +11,11 @@ import {
   UPDATE_MEALS,
   UPDATE_FILTER,
   UPDATE_SORT,
+  TOGGLE_SHOW_DAY,
+  UPDATE_DAY_PLAN,
+  REMOVE_DAY_PLAN,
+  RANDOM_DAY_PLAN,
+  ADD_PLAN_TO_CART,
 } from "./actions";
 
 const initialState = {
@@ -22,6 +27,13 @@ const initialState = {
   meals: [],
   filters: [],
   sort: "",
+  plan: [
+    { day: 1, isOpen: true, meals: [4, null, null, null, null] },
+    { day: 2, isOpen: true, meals: [null, null, null, null, null] },
+    { day: 3, isOpen: true, meals: [null, null, null, null, null] },
+    { day: 4, isOpen: true, meals: [null, null, null, null, null] },
+    { day: 5, isOpen: true, meals: [null, null, null, null, null] },
+  ],
 };
 
 export default function reducer(state = initialState, action) {
@@ -106,8 +118,73 @@ export default function reducer(state = initialState, action) {
         ...state,
         sort: action.sort,
       };
-
+    case TOGGLE_SHOW_DAY:
+      return {
+        ...state,
+        plan: state.plan.map((ele, index) => {
+          if (action.index === index) {
+            ele.isOpen = !ele.isOpen;
+          }
+          return ele;
+        }),
+      };
+    case UPDATE_DAY_PLAN:
+      return {
+        ...state,
+        plan: state.plan.map((day, index) => {
+          if (parseInt(action.dayIndex) - 1 === index) {
+            day.meals = day.meals.map((meal, index) => {
+              if (parseInt(action.mealIndex) === index) {
+                meal = parseInt(action.mealId - 1);
+              }
+              return meal;
+            });
+          }
+          return day;
+        }),
+      };
+    case REMOVE_DAY_PLAN:
+      return {
+        ...state,
+        plan: state.plan.map((day, index) => {
+          if (parseInt(action.dayIndex) - 1 === index) {
+            day.meals = day.meals.map((meal, index) => {
+              if (parseInt(action.mealIndex) === index) {
+                meal = null;
+              }
+              return meal;
+            });
+          }
+          return day;
+        }),
+      };
+    case RANDOM_DAY_PLAN:
+      return {
+        ...state,
+        plan: state.plan.map((day, index) => {
+          if (parseInt(action.dayIndex) - 1 === index) {
+            day.meals = day.meals.map((meal, index) => {
+              if (parseInt(action.mealIndex) === index) {
+                meal = Math.floor(Math.random() * state.meals.length);
+              }
+              return meal;
+            });
+          }
+          return day;
+        }),
+      };
+    case ADD_PLAN_TO_CART:
+      return {
+        ...state,
+        cartOpen: true,
+        cart: [...action.products],
+      };
     default:
       return state;
   }
 }
+
+// .reduce((acc, cur) => {
+
+//   return acc;
+// }, []),

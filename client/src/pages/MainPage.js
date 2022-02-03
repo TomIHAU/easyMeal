@@ -14,9 +14,8 @@ export default function MainPage() {
     if (data) {
       const meals = data.meals;
       dispatch({ type: UPDATE_MEALS, meals });
+      setMealArr(data?.meals.slice(0, 4));
     }
-
-    setMealArr(data?.meals.slice(0, 4));
   }, [data, dispatch]);
   return (
     <div className="App">
@@ -39,7 +38,7 @@ export default function MainPage() {
       <div className="firstSales videoSales">
         <div className="preVid">
           <div>
-            <h3>Meals Freshly Made and delivered to you</h3>
+            <h3>Meals Freshly Made Delivered To You</h3>
           </div>
           <div>
             <p>
@@ -50,19 +49,14 @@ export default function MainPage() {
           </div>
         </div>
         <div className="videoHalf">
-          <video
-            className="myVideo"
-            loop="loop"
-            autoPlay
-            style={{ zIndex: 100 }}
-          >
+          <video className="myVideo" loop="loop" autoPlay="autoplay" muted>
             <source src="/img/meal-prep-loop.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
       </div>
       <div className="firstSales">
-        <h2>Try our Amazing Range of products!</h2>
+        <h2>Try our Amazing Range of Products!</h2>
         <p>
           Amazing range of lorem ipsum healthy food which our chefs have lorem
           ipsum amazing!
@@ -70,7 +64,7 @@ export default function MainPage() {
         <div className="firstSalesLinks">
           {mealArr.map((meal) => {
             return (
-              <div>
+              <div key={meal.id}>
                 <img src={meal.img} alt={meal.mealName} />
                 <p>{meal.mealName}</p>
               </div>

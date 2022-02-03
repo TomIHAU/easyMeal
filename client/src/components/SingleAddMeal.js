@@ -1,10 +1,19 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { UPDATE_DAY_PLAN } from "../utils/GlobalState/actions";
+import { Link } from "react-router-dom";
 
-export default function SingleMenuMeal({
+export default function SingleAddMeal({
   meal,
   handleShowMoreDetails,
-  addToCart,
+  dayIndex,
+  mealIndex,
 }) {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  function handleChangePlan() {
+    dispatch({ type: UPDATE_DAY_PLAN, mealId: meal.id, dayIndex, mealIndex });
+  }
   return (
     <div className="planMeal">
       <div className="planMealTop">
@@ -27,14 +36,15 @@ export default function SingleMenuMeal({
           <p>P:{meal.protein}</p>
         </div>
         <div className="ourRangeAdd">
-          <button
+          <Link
+            to="/plan"
             className="mainBannerBtn ourRangeAddBtn"
             onClick={() => {
-              addToCart(meal);
+              handleChangePlan();
             }}
           >
-            Add to Cart
-          </button>
+            Add to Plan
+          </Link>
         </div>
       </div>
     </div>

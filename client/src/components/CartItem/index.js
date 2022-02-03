@@ -5,6 +5,7 @@ import {
   UPDATE_CART_QUANTITY,
 } from "../../utils/GlobalState/actions";
 import { idbPromise } from "../../utils/helpers";
+import { BsTrash } from "react-icons/bs";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -41,9 +42,9 @@ const CartItem = ({ item }) => {
       </div>
       <div>
         <div>
-          {item.mealName}, ${item.price}
+          {item.mealName} ${item.price}
         </div>
-        <div>
+        <div className="cartQty">
           <span>Qty:</span>
           <input
             type="number"
@@ -56,7 +57,7 @@ const CartItem = ({ item }) => {
             aria-label="trash"
             onClick={() => removeFromCart(item)}
           >
-            🗑️
+            <BsTrash className="cartTrash" style={{ cursor: "pointer" }} />
           </span>
         </div>
       </div>
