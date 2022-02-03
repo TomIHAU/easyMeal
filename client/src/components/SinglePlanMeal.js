@@ -1,7 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { REMOVE_DAY_PLAN, RANDOM_DAY_PLAN } from "../utils/GlobalState/actions";
+import { BsTrash } from "react-icons/bs";
+import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
 
-export default function PlanMeal({ meal }) {
+export default function PlanMeal({ meal, dayIndex, mealIndex }) {
+  const dispatch = useDispatch();
+  function handleRemoveItem() {
+    dispatch({ type: REMOVE_DAY_PLAN, dayIndex, mealIndex });
+  }
+  function handleRandomItem() {
+    dispatch({ type: RANDOM_DAY_PLAN, dayIndex, mealIndex });
+  }
   return (
     <div className="planMeal">
       <div className="planMealTop">
@@ -18,6 +28,20 @@ export default function PlanMeal({ meal }) {
           <p>C:{meal.carbs}</p>
           <p>F:{meal.fat}</p>
           <p>P:{meal.protein}</p>
+        </div>
+        <div className="planIcon">
+          <GiPerspectiveDiceSixFacesRandom
+            className="planIconBtn"
+            onClick={() => {
+              handleRandomItem();
+            }}
+          />
+          <BsTrash
+            className="planIconBtn"
+            onClick={() => {
+              handleRemoveItem();
+            }}
+          />
         </div>
       </div>
     </div>

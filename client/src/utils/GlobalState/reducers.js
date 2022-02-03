@@ -13,6 +13,8 @@ import {
   UPDATE_SORT,
   TOGGLE_SHOW_DAY,
   UPDATE_DAY_PLAN,
+  REMOVE_DAY_PLAN,
+  RANDOM_DAY_PLAN,
 } from "./actions";
 
 const initialState = {
@@ -133,6 +135,36 @@ export default function reducer(state = initialState, action) {
             day.meals = day.meals.map((meal, index) => {
               if (parseInt(action.mealIndex) === index) {
                 meal = parseInt(action.mealId - 1);
+              }
+              return meal;
+            });
+          }
+          return day;
+        }),
+      };
+    case REMOVE_DAY_PLAN:
+      return {
+        ...state,
+        plan: state.plan.map((day, index) => {
+          if (parseInt(action.dayIndex) - 1 === index) {
+            day.meals = day.meals.map((meal, index) => {
+              if (parseInt(action.mealIndex) === index) {
+                meal = null;
+              }
+              return meal;
+            });
+          }
+          return day;
+        }),
+      };
+    case RANDOM_DAY_PLAN:
+      return {
+        ...state,
+        plan: state.plan.map((day, index) => {
+          if (parseInt(action.dayIndex) - 1 === index) {
+            day.meals = day.meals.map((meal, index) => {
+              if (parseInt(action.mealIndex) === index) {
+                meal = Math.floor(Math.random() * state.meals.length);
               }
               return meal;
             });

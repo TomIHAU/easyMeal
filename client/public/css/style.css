@@ -113,7 +113,9 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
 }
-
+.flex-row {
+  display: flex;
+}
 .mainBannerBtn {
   appearance: none;
   background-color: var(--maincolor);
@@ -490,6 +492,30 @@ body {
   text-align: center;
   padding: 15px;
   background-color: var(--mainback);
+}
+.totalPlan {
+  background-color: var(--maincolor);
+  display: flex;
+  height: 40px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  color: white;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 17px;
+}
+.planIcon {
+  position: relative;
+  top: 30px;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.planIconBtn {
+  cursor: pointer;
+  font-size: 18px;
 }
 @media screen and (max-width: 768px) {
   .cart {

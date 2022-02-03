@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_MEALS } from "../utils/queries";
+import { UPDATE_MEALS } from "../utils/GlobalState/actions";
 
 import { mealsArray } from "../temp/mealsArray";
 import AddMealBtn from "../components/AddMealBtn";
@@ -11,7 +12,8 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 import { TOGGLE_SHOW_DAY } from "../utils/GlobalState/actions";
 
-function calculateDayTotal(arr, key) {
+function calculateDayTotal(arr, key, meals) {
+  console.log(meals);
   return arr.reduce((acc, cur) => {
     if (cur !== null) {
       acc += mealsArray[cur][key];
@@ -31,9 +33,15 @@ export default function MealPlan() {
   const { loading, data } = useQuery(QUERY_MEALS);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  console.log(state);
+
+  useEffect(() => {
+    if (data) {
+      const meals = data.meals;
+      dispatch({ type: UPDATE_MEALS, meals });
+    }
+  }, [data, dispatch]);
   const daysOpen = state.plan;
-  console.log(state);
+
   const handleShowDay = (index) => {
     dispatch({ type: TOGGLE_SHOW_DAY, index });
   };
@@ -49,9 +57,9 @@ export default function MealPlan() {
           <div className="dayHeader">
             <h2>Day {day.day}</h2>
             <div className="dayInfo">
-              <p>Carbs: {calculateDayTotal(day.meals, "carbs")}</p>
-              <p>Fat: {calculateDayTotal(day.meals, "fat")}</p>
-              <p>Pro: {calculateDayTotal(day.meals, "protein")}</p>
+              <p>Carbs: {calculateDayTotal(day.meals, "carbs", data?.meals)}</p>
+              <p>Fat: {calculateDayTotal(day.meals, "fat", data?.meals)}</p>
+              <p>Pro: {calculateDayTotal(day.meals, "protein", data?.meals)}</p>
             </div>
             {day.isOpen ? (
               <BsChevronUp
@@ -76,6 +84,8 @@ export default function MealPlan() {
                   <SinglePlanMeal
                     key={index + day.day}
                     meal={data.meals[meal]}
+                    mealIndex={index}
+                    dayIndex={day.day}
                   />
                 )
               )}
@@ -83,13 +93,14 @@ export default function MealPlan() {
           )}
         </div>
       ))}
-      <div className="totalPlan">
-        <p>carbs:{calculateWeekTotal(daysOpen, "carbs")}</p>
-        <p>protein:{calculateWeekTotal(daysOpen, "protein")}</p>
-        <p>fat:{calculateWeekTotal(daysOpen, "fat")}</p>
-        <p>total price: ${calculateWeekTotal(daysOpen, "price")}</p>
-        <p>asdfsadfasd</p>
-      </div>
+      {calculateWeekTotal(daysOpen, "price") > 0 && (
+        <div className="totalPlan">
+          <p>Carbs: {calculateWeekTotal(daysOpen, "carbs")}</p>
+          <p>Protein: {calculateWeekTotal(daysOpen, "protein")}</p>
+          <p>Fat: {calculateWeekTotal(daysOpen, "fat")}</p>
+          <p>Price: ${calculateWeekTotal(daysOpen, "price").toFixed(2)}</p>
+        </div>
+      )}
     </div>
   );
 }

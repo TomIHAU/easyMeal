@@ -48,6 +48,12 @@
   font-size: 14px;
   height: 100%;
 }
+.checkoutBtnCont {
+  justify-content: space-between;
+}
+.checkoutBtn {
+  padding: 2px;
+}
 @media screen and (max-width: 768px) {
   .cart {
     top: 0;
