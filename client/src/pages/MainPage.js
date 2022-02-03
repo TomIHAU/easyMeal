@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { UPDATE_MEALS } from "../utils/GlobalState/actions";
+import { useQuery } from "@apollo/client";
+import { QUERY_MEALS } from "../utils/queries";
 
 export default function MainPage() {
+  const dispatch = useDispatch();
+  const { data } = useQuery(QUERY_MEALS);
+  const [mealArr, setMealArr] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      const meals = data.meals;
+      dispatch({ type: UPDATE_MEALS, meals });
+    }
+
+    setMealArr(data?.meals.slice(0, 4));
+  }, [data, dispatch]);
   return (
     <div className="App">
       <div className="mainBanner">
@@ -12,7 +28,7 @@ export default function MainPage() {
             selection of healthy meals available for low cost with a quality
             guarantee. Lorem Ipsum amazing food served straight to your door
           </p>
-          <Link to="/plan">
+          <Link to="/ourRange">
             <button className="mainBannerBtn">Order Now!</button>
           </Link>
         </div>
@@ -20,19 +36,46 @@ export default function MainPage() {
           <img src="./img/foodTable.jpg" alt="food pic to make you hungry" />
         </div>
       </div>
-
+      <div className="firstSales videoSales">
+        <div className="preVid">
+          <div>
+            <h3>Meals Freshly Made and delivered to you</h3>
+          </div>
+          <div>
+            <p>
+              From the kitchen of Lorem Ipsum, we deliver anywhere that is
+              profitable. Each of our meals mostly made the day of delivery.
+              Beautifully packaged, nothing like what is shown in this video.
+            </p>
+          </div>
+        </div>
+        <div className="videoHalf">
+          <video
+            className="myVideo"
+            loop="loop"
+            autoPlay
+            style={{ zIndex: 100 }}
+          >
+            <source src="/img/meal-prep-loop.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
       <div className="firstSales">
-        <h2>head for selling the product</h2>
+        <h2>Try our Amazing Range of products!</h2>
         <p>
           Amazing range of lorem ipsum healthy food which our chefs have lorem
           ipsum amazing!
         </p>
         <div className="firstSalesLinks">
-          <img src="./img/foodTable.jpg" alt="food pic to make you hungry" />
-          <img src="./img/foodTable.jpg" alt="food pic to make you hungry" />
-          <img src="./img/foodTable.jpg" alt="food pic to make you hungry" />
-          <img src="./img/foodTable.jpg" alt="food pic to make you hungry" />
-          <img src="./img/foodTable.jpg" alt="food pic to make you hungry" />
+          {mealArr.map((meal) => {
+            return (
+              <div>
+                <img src={meal.img} alt={meal.mealName} />
+                <p>{meal.mealName}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

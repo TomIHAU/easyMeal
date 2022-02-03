@@ -3,12 +3,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { UPDATE_FILTER } from "../utils/GlobalState/actions";
-
+import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 export default function FilterForm() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
   const [formState, setFormState] = useState([]);
+  const [showFilter, setShowFilter] = useState(false);
+
+  function handleShowFilter() {
+    setShowFilter(!showFilter);
+  }
 
   useEffect(() => {
     setFormState(new Array(state.meals.length).fill(false));
@@ -34,23 +39,13 @@ export default function FilterForm() {
 
     handleFilter(filters);
   };
-  //   function handleFormChange(event) {
-  //     const { name, value } = event.target;
-  //     setFormState({
-  //       ...formState,
-  //       [name]: value,
-  //     });
-  //   }
 
-  //   useEffect(() => {
-
-  //     console.log(formState);
-  //     handleFilter(formState);
-  //   }, [formState, dispatch]);
   const { meals, filters } = state;
-  return (
-    <aside>
-      <h2>this is to filter stuff</h2>
+  return showFilter ? (
+    <div className="filterdiv">
+      <div className="showFilterBtn" onClick={handleShowFilter}>
+        <BsChevronUp onClick={handleShowFilter} />
+      </div>
       <form>
         {meals.map((meal, index) => {
           return (
@@ -60,7 +55,6 @@ export default function FilterForm() {
                 key={index}
                 id={index}
                 name={meal.mealName}
-                checked={filters === meal.mealName}
                 onChange={(event) => {
                   handleOnChange(event);
                 }}
@@ -70,6 +64,12 @@ export default function FilterForm() {
           );
         })}
       </form>
-    </aside>
+    </div>
+  ) : (
+    <div>
+      <div className="showFilterBtn" onClick={handleShowFilter}>
+        <BsChevronDown />
+      </div>
+    </div>
   );
 }

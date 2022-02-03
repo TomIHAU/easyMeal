@@ -7,6 +7,7 @@ import { QUERY_MEALS } from "../utils/queries";
 import { mealsArray } from "../temp/mealsArray";
 import SinglePlanMeal from "../components/SinglePlanMeal";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import AddMealBtn from "../components/AddMealBtn";
 
 function calculateDayTotal(arr, key) {
   return arr.reduce((acc, cur) => {
@@ -80,7 +81,7 @@ export default function MealPlan() {
             <div className="dayMeals" style={{ transition: "0.5s" }}>
               {day.meals.map((meal, index) =>
                 meal === null ? (
-                  <p>this is null - replace with redirectbutton to menu page</p>
+                  <AddMealBtn />
                 ) : (
                   <SinglePlanMeal
                     key={index + day.day}
