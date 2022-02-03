@@ -91,22 +91,24 @@ export default function OurRange() {
     />
   ) : (
     <div className="ourRangeOuter">
-      <FilterForm />
       <div className="ourRange">
-        <h2>Our Range of meals</h2>
-        <SortSelect />
-        <div className="mealsContainer">
-          {searchResults.map((meal) => {
-            return (
-              <SingleMenuMeal
-                key={meal.id}
-                meal={meal}
-                mealId={meal.id}
-                addToCart={addToCart}
-                handleShowMoreDetails={handleShowMoreDetails}
-              />
-            );
-          })}
+        <h2 className="ourRangeHeader">Our Range of meals</h2>
+        <FilterForm />
+        <div>
+          <SortSelect />
+          <div className="mealsContainer">
+            {searchResults.map((meal) => {
+              return (
+                <SingleMenuMeal
+                  key={meal.id}
+                  meal={meal}
+                  mealId={meal.id}
+                  addToCart={addToCart}
+                  handleShowMoreDetails={handleShowMoreDetails}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

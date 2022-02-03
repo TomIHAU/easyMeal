@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { UPDATE_FILTER } from "../utils/GlobalState/actions";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 export default function FilterForm() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
@@ -39,24 +39,12 @@ export default function FilterForm() {
 
     handleFilter(filters);
   };
-  //   function handleFormChange(event) {
-  //     const { name, value } = event.target;
-  //     setFormState({
-  //       ...formState,
-  //       [name]: value,
-  //     });
-  //   }
 
-  //   useEffect(() => {
-
-  //     console.log(formState);
-  //     handleFilter(formState);
-  //   }, [formState, dispatch]);
   const { meals, filters } = state;
   return showFilter ? (
     <aside className="filterAside">
       <div className="showFilterBtn" onClick={handleShowFilter}>
-        <BsChevronLeft onClick={handleShowFilter} />
+        <BsChevronUp onClick={handleShowFilter} />
       </div>
       <form>
         {meals.map((meal, index) => {
@@ -80,7 +68,7 @@ export default function FilterForm() {
   ) : (
     <div>
       <div className="showFilterBtn" onClick={handleShowFilter}>
-        <BsChevronRight />
+        <BsChevronDown />
       </div>
     </div>
   );

@@ -216,15 +216,19 @@ body {
 }
 .showFilterBtn {
   cursor: pointer;
-  background-color: blue;
+  background-color: var(--mainback);
   height: 50px;
   width: 50px;
-  color: white;
+  color: #000;
   font-size: 30px;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 0 5px 0;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.showFilterBtn:hover {
+  background-color: var(--maincolor);
+  color: white;
 }
 .filterAside {
 }
@@ -342,7 +346,6 @@ aside {
   margin: 10px 5px;
   display: flex;
   flex-direction: column;
-
   -webkit-box-shadow: 1px 0px 15px 6px rgba(0, 0, 0, 0.4);
   box-shadow: 1px 0px 15px 6px rgba(0, 0, 0, 0.4);
 }
@@ -368,7 +371,18 @@ aside {
   display: flex;
   justify-content: space-between;
 }
-
+.addMealTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addMealTop h3 {
+  margin: 10px;
+  text-align: center;
+}
+.planMealBotChoose {
+  background-color: rgb(212, 212, 212);
+}
 .aboutDiv {
   background-color: var(--mainback);
   margin: 30px;
@@ -393,7 +407,7 @@ aside {
   width: 100%;
   margin: 10px auto;
   text-align: center;
-  color: #000;
+  color: var(--maincolor);
 }
 .aboutContact:hover {
   cursor: pointer;
@@ -436,6 +450,14 @@ aside {
 .aboutInput:focus {
   background-color: #ffffff;
   border: 1px solid black;
+}
+.addMealBtn {
+  cursor: pointer;
+}
+.ourRangeHeader {
+  text-align: center;
+  padding: 15px;
+  background-color: var(--mainback);
 }
 @media screen and (max-width: 768px) {
   .cart {

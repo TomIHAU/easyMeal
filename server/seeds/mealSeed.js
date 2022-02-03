@@ -2,12 +2,12 @@ const { Meal } = require("../models");
 
 const mealData = [
   {
-    mealName: "Rice",
+    mealName: "Bibimbap",
     protein: 40,
     fat: 30,
     carbs: 20,
     price: 9.74,
-    img: "./img/bibimbap.jpg",
+    img: "/img/bibimbap.jpg",
   },
   {
     mealName: "Paste",
@@ -15,7 +15,7 @@ const mealData = [
     fat: 10,
     carbs: 20,
     price: 11.74,
-    img: "./img/bibimbap.jpg",
+    img: "/img/bibimbap.jpg",
   },
   {
     mealName: "Pizza",
@@ -23,7 +23,7 @@ const mealData = [
     fat: 30,
     carbs: 5,
     price: 9.74,
-    img: "./img/bibimbap.jpg",
+    img: "/img/bibimbap.jpg",
   },
   {
     mealName: "Spam",
@@ -31,7 +31,7 @@ const mealData = [
     fat: 0,
     carbs: 20,
     price: 14.74,
-    img: "./img/bibimbap.jpg",
+    img: "/img/bibimbap.jpg",
   },
   {
     mealName: "Chicken",
@@ -39,7 +39,7 @@ const mealData = [
     fat: 30,
     carbs: 30,
     price: 10.74,
-    img: "./img/bibimbap.jpg",
+    img: "/img/bibimbap.jpg",
   },
 ];
 

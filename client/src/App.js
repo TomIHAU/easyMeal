@@ -57,6 +57,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/ourRange" element={<OurRange />} />
             <Route path="/plan" element={<MealPlan />} />
+            <Route path="/plan/add" element={<OurRange />} />
             <Route path="/signUp" element={<SignUp />} />
           </Routes>
         </StoreProvider>
