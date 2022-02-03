@@ -10,7 +10,7 @@ import {
   TOGGLE_CART,
   ADD_MULTIPLE_TO_CART,
 } from "../../utils/GlobalState/actions";
-import { AiOutlineShoppingCart, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./style.css";
 

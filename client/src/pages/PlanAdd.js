@@ -11,6 +11,7 @@ import SortSelect from "../components/SortSelect";
 import FilterForm from "../components/FilterForm";
 import SingleAddMeal from "../components/SingleAddMeal";
 import MoreDetailsMeal from "../components/MoreDetailsMeal";
+import PlanTotalBar from "../components/PlanTotalBar";
 function filterResults(arr, args) {
   return arr.filter((ele) => {
     for (let i = 0; i < args.length; i++) {
@@ -35,10 +36,13 @@ export default function PlanAdd() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [MoreDetails, setMoreDetails] = useState({ show: false, meal: 0 });
+  const daysOpen = state.plan;
 
   const [searchResults, setSearchResults] = useState(state.meals);
+
   const { data } = useQuery(QUERY_MEALS);
 
+  console.log(state.cart);
   useEffect(() => {
     if (data) {
       const meals = data.meals;
@@ -86,6 +90,7 @@ export default function PlanAdd() {
           </div>
         </div>
       </div>
+      <PlanTotalBar daysOpen={daysOpen} meals={data?.meals} />
     </div>
   );
 }

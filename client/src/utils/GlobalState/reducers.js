@@ -15,6 +15,7 @@ import {
   UPDATE_DAY_PLAN,
   REMOVE_DAY_PLAN,
   RANDOM_DAY_PLAN,
+  ADD_PLAN_TO_CART,
 } from "./actions";
 
 const initialState = {
@@ -172,7 +173,17 @@ export default function reducer(state = initialState, action) {
           return day;
         }),
       };
+    case ADD_PLAN_TO_CART:
+      return {
+        ...state,
+        cart: [...state.cart, ...action.products],
+      };
     default:
       return state;
   }
 }
+
+// .reduce((acc, cur) => {
+
+//   return acc;
+// }, []),

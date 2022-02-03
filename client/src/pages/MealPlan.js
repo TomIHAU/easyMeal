@@ -5,28 +5,22 @@ import { useQuery } from "@apollo/client";
 import { QUERY_MEALS } from "../utils/queries";
 import { UPDATE_MEALS } from "../utils/GlobalState/actions";
 
-import { mealsArray } from "../temp/mealsArray";
 import AddMealBtn from "../components/AddMealBtn";
 import SinglePlanMeal from "../components/SinglePlanMeal";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 import { TOGGLE_SHOW_DAY } from "../utils/GlobalState/actions";
+import PlanTotalBar from "../components/PlanTotalBar";
 
 function calculateDayTotal(arr, key, meals) {
-  console.log(meals);
-  return arr.reduce((acc, cur) => {
-    if (cur !== null) {
-      acc += mealsArray[cur][key];
-    }
-    return acc;
-  }, 0);
-}
-
-function calculateWeekTotal(arr, key) {
-  return arr.reduce((acc, cur) => {
-    acc += calculateDayTotal(cur.meals, key);
-    return acc;
-  }, 0);
+  if (meals) {
+    return arr.reduce((acc, cur) => {
+      if (cur !== null) {
+        acc += meals[cur][key];
+      }
+      return acc;
+    }, 0);
+  }
 }
 
 export default function MealPlan() {
@@ -93,14 +87,7 @@ export default function MealPlan() {
           )}
         </div>
       ))}
-      {calculateWeekTotal(daysOpen, "price") > 0 && (
-        <div className="totalPlan">
-          <p>Carbs: {calculateWeekTotal(daysOpen, "carbs")}</p>
-          <p>Protein: {calculateWeekTotal(daysOpen, "protein")}</p>
-          <p>Fat: {calculateWeekTotal(daysOpen, "fat")}</p>
-          <p>Price: ${calculateWeekTotal(daysOpen, "price").toFixed(2)}</p>
-        </div>
-      )}
+      <PlanTotalBar daysOpen={daysOpen} meals={data?.meals} />
     </div>
   );
 }

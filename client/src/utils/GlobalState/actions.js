@@ -18,3 +18,4 @@ export const UPDATE_DAY_PLAN = "UPDATE_DAY_PLAN";
 export const TOGGLE_SHOW_DAY = "TOGGLE_SHOW_DAY";
 export const REMOVE_DAY_PLAN = "REMOVE_DAY_PLAN";
 export const RANDOM_DAY_PLAN = "RANDOM_DAY_PLAN";
+export const ADD_PLAN_TO_CART = "ADD_PLAN_TO_CART";

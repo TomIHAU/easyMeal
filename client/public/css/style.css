@@ -517,6 +517,12 @@ body {
   cursor: pointer;
   font-size: 18px;
 }
+@media screen and (max-width: 900px) {
+  .dayMeals {
+    overflow: auto;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .cart {
     top: 0;
@@ -558,5 +564,9 @@ body {
   .videoHalf {
     height: 50%;
     width: 100%;
+  }
+  .dayMeals {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
