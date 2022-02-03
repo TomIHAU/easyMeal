@@ -176,7 +176,8 @@ export default function reducer(state = initialState, action) {
     case ADD_PLAN_TO_CART:
       return {
         ...state,
-        cart: [...state.cart, ...action.products],
+        cartOpen: true,
+        cart: [...action.products],
       };
     default:
       return state;

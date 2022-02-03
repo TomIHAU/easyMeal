@@ -37,16 +37,27 @@ export default function PlanTotalBar({ daysOpen, meals }) {
     }, []);
   }
   function sort() {
-    let allProducts = [...state.cart, ...products];
-    let noDubs = [];
-    for (let i = 0; i < allProducts.length; i++) {
-      noDubs[allProducts[i].id] = 1;
-      if (allProducts[i].purchaseQuantity) {
+    let productTemp = products;
+    let cartTemp = state.cart;
+    for (let i = 0; i < productTemp.length; i++) {
+      let inCart = false;
+      for (let j = 0; j < cartTemp; j++) {
+        if (productTemp[i].id === cartTemp.id) {
+          inCart = true;
+          cartTemp.purchaseQuantity += 1;
+        }
+      }
+      if (!inCart) {
+        productTemp[i].purchaseQuantity = 1;
+        cartTemp.push(productTemp[i]);
       }
     }
+    return cartTemp;
   }
   function handleAddAllToCart() {
-    console.log(products);
+    // console.log("hello");
+    // const sortedProducts = sort();
+    // console.log(sortedProducts);
     dispatch({ type: ADD_PLAN_TO_CART, products });
   }
   return (
