@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_MEALS } from "../utils/queries";
 
 import { mealsArray } from "../temp/mealsArray";
+import AddMealBtn from "../components/AddMealBtn";
 import SinglePlanMeal from "../components/SinglePlanMeal";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
-import AddMealBtn from "../components/AddMealBtn";
+
+import { TOGGLE_SHOW_DAY } from "../utils/GlobalState/actions";
 
 function calculateDayTotal(arr, key) {
   return arr.reduce((acc, cur) => {
@@ -27,25 +29,13 @@ function calculateWeekTotal(arr, key) {
 
 export default function MealPlan() {
   const { loading, data } = useQuery(QUERY_MEALS);
-
-  const [daysOpen, setDaysOpen] = useState([
-    { day: 1, isOpen: true, meals: [3, 1, 1, 1, 4] },
-    { day: 2, isOpen: true, meals: [0, 1, 3, null, 4] },
-    { day: 3, isOpen: true, meals: [2, 3, 2, 3, 4] },
-    { day: 4, isOpen: true, meals: [null, null, null, null, 4] },
-    { day: 5, isOpen: true, meals: [null, null, null, null, null] },
-  ]);
-
-  const handleShowDay = (event) => {
-    setDaysOpen(
-      daysOpen.map((day, index) => {
-        const id = parseInt(event.target.id);
-        if (index === id) {
-          day.isOpen = !day.isOpen;
-        }
-        return day;
-      })
-    );
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  console.log(state);
+  const daysOpen = state.plan;
+  console.log(state);
+  const handleShowDay = (index) => {
+    dispatch({ type: TOGGLE_SHOW_DAY, index });
   };
 
   if (loading) {
@@ -66,13 +56,13 @@ export default function MealPlan() {
             {day.isOpen ? (
               <BsChevronUp
                 id={index}
-                onClick={handleShowDay}
+                onClick={() => handleShowDay(index)}
                 className="mealPlanShowBtn"
               />
             ) : (
               <BsChevronDown
                 id={index}
-                onClick={handleShowDay}
+                onClick={() => handleShowDay(index)}
                 className="mealPlanShowBtn"
               />
             )}
@@ -81,7 +71,7 @@ export default function MealPlan() {
             <div className="dayMeals" style={{ transition: "0.5s" }}>
               {day.meals.map((meal, index) =>
                 meal === null ? (
-                  <AddMealBtn />
+                  <AddMealBtn dayIndex={day.day} mealIndex={index} />
                 ) : (
                   <SinglePlanMeal
                     key={index + day.day}

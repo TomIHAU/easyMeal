@@ -16,6 +16,7 @@ import { setContext } from "@apollo/client/link/context";
 import About from "./pages/About";
 import Dash from "./pages/Dash";
 import Login from "./pages/Login";
+import PlanAdd from "./pages/PlanAdd";
 import MainPage from "./pages/MainPage";
 import MealPlan from "./pages/MealPlan";
 import OurRange from "./pages/OurRange";
@@ -57,7 +58,10 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/ourRange" element={<OurRange />} />
             <Route path="/plan" element={<MealPlan />} />
-            <Route path="/plan/add" element={<OurRange />} />
+            <Route
+              path="/plan/add/:dayIndex/:mealIndex"
+              element={<PlanAdd />}
+            />
             <Route path="/signUp" element={<SignUp />} />
           </Routes>
         </StoreProvider>

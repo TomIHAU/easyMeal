@@ -10,6 +10,7 @@
   padding: 0.5rem;
   box-shadow: 0 0 16px 2px #00000080;
   border-bottom-left-radius: 0.5rem;
+  z-index: 10;
 }
 
 .cart h2 {
@@ -21,6 +22,7 @@
 
 .cart .close {
   position: absolute;
+  font-size: 16px;
   top: 8px;
   right: 8px;
   cursor: pointer;
@@ -30,13 +32,22 @@
   width: 70px;
   margin-right: 1rem;
 }
-
-.cart input {
-  width: 50px;
-  padding: 0;
-  margin: 0 0.5rem 1rem 0;
+.cartQty {
+  font-weight: bold;
+  padding: 3px;
+  margin: 3px 0;
 }
 
+.cart input {
+  text-align: right;
+  border: none;
+  width: 40px;
+  padding: 1px 0 0;
+}
+.cartTrash {
+  font-size: 14px;
+  height: 100%;
+}
 @media screen and (max-width: 768px) {
   .cart {
     top: 0;
