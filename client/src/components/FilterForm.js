@@ -42,7 +42,7 @@ export default function FilterForm() {
 
   const { meals, filters } = state;
   return showFilter ? (
-    <aside className="filterAside">
+    <div className="filterdiv">
       <div className="showFilterBtn" onClick={handleShowFilter}>
         <BsChevronUp onClick={handleShowFilter} />
       </div>
@@ -64,7 +64,7 @@ export default function FilterForm() {
           );
         })}
       </form>
-    </aside>
+    </div>
   ) : (
     <div>
       <div className="showFilterBtn" onClick={handleShowFilter}>

@@ -230,14 +230,36 @@ body {
   background-color: var(--maincolor);
   color: white;
 }
-.filterAside {
+
+.videoSales {
+  flex-direction: row;
+}
+.myVideo {
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid black;
+}
+
+.preVid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 300px;
+  font-size: 16px;
+}
+.preVid,
+.videoHalf {
+  width: 50%;
+  padding: 15px;
 }
 .ourRangeOuter {
   height: 100%;
+  width: 100%;
   display: flex;
 }
 .ourRange {
   height: 100%;
+  width: 100%;
 }
 .ourRangeAdd {
   display: flex;
@@ -251,10 +273,10 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
 }
-aside {
+/* aside {
   height: 80%;
   width: 30%;
-}
+} */
 .loginContainer {
   background-image: url("/img/loginBack.jpg");
   margin: 30px auto;
