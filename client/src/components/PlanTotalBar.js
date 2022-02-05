@@ -40,13 +40,13 @@ export default function PlanTotalBar({ daysOpen, meals }) {
     }, []);
   }
   function sort() {
-    return products.reduce((acc, product) => {
+    const leftOvers = products.reduce((acc, product) => {
       let inCart = false;
       state.cart.forEach((cartP) => {
-        if (product.id === cartP.id) {
+        if (parseInt(product.id) === parseInt(cartP.id)) {
           dispatch({
             type: UPDATE_CART_QUANTITY,
-            id: product.id,
+            id: parseInt(product.id),
             purchaseQuantity:
               parseInt(cartP.purchaseQuantity) +
               parseInt(product.purchaseQuantity),
@@ -59,11 +59,27 @@ export default function PlanTotalBar({ daysOpen, meals }) {
       }
       return acc;
     }, []);
+
+    const consolidated = {};
+
+    for (const num of leftOvers) {
+      consolidated[num.id] = consolidated[num.id]
+        ? consolidated[num.id] + 1
+        : 1;
+    }
+
+    const otherProducts = [];
+
+    for (const meal in consolidated) {
+      otherProducts.push({
+        ...state.meals[meal - 1],
+        purchaseQuantity: consolidated[meal],
+      });
+    }
+    return otherProducts;
   }
   function handleAddAllToCart() {
     const sortedProducts = sort();
-    console.log(sortedProducts);
-    console.log(state.cart);
     dispatch({ type: ADD_PLAN_TO_CART, products: sortedProducts });
   }
   return (
