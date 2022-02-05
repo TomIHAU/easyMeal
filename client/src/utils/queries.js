@@ -30,3 +30,18 @@ export const QUERY_MEALS = gql`
     }
   }
 `;
+
+export const QUERY_USER_PURCHASES = gql`
+  query myPurchases($user_id: ID!) {
+    myPurchases(user_id: $user_id) {
+      user_id {
+        username
+      }
+      buyDate
+      qty
+      meal_id {
+        mealName
+      }
+    }
+  }
+`;
