@@ -61,9 +61,10 @@ export default function reducer(state = initialState, action) {
         ...state,
         cartOpen: true,
         cart: state.cart.map((product) => {
-          if (action.id === product.id) {
+          if (parseInt(action.id) === parseInt(product.id)) {
             product.purchaseQuantity = action.purchaseQuantity;
           }
+
           return product;
         }),
       };
@@ -177,14 +178,9 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         cartOpen: true,
-        cart: [...action.products],
+        cart: [...state.cart, ...action.products],
       };
     default:
       return state;
   }
 }
-
-// .reduce((acc, cur) => {
-
-//   return acc;
-// }, []),

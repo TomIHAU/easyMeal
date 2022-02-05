@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useSelector } from "react-redux";
+import { AiOutlineClose } from "react-icons/ai";
 
 export default function MoreDetailsMeal({ mealId, setMoreDetails, addToCart }) {
   const state = useSelector((state) => state);
@@ -15,21 +16,41 @@ export default function MoreDetailsMeal({ mealId, setMoreDetails, addToCart }) {
 
   return (
     <div>
-      <h2 onClick={handleOnChange}>this is to A large meal stuff</h2>
-      <h1>Meal Details</h1>
-      <img src={`${enhance.img}`} alt="" />
-      <p>{enhance.fat}</p>
-      <p>{enhance.protein}</p>
-      <p>{enhance.carbs}</p>
-      <p>{enhance.mealName}</p>
-      <button
-        onClick={() => {
-          addToCart(enhance);
-        }}
-      >
-        Add to Cart
-      </button>
-      <button onClick={handleOnChange}>Close</button>
+      <div className="mealEnhance">
+        <div className="mealEnhanceInner">
+          <div className="enhanceHead">
+            <h1>{enhance.mealName}</h1>
+            <AiOutlineClose
+              onClick={handleOnChange}
+              className="enhanceClose "
+            ></AiOutlineClose>
+          </div>
+          <div className="enhanceMain">
+            <div className="enhanceImgCont">
+              <img src={`${enhance.img}`} alt={`${enhance.mealName}`} />
+            </div>
+            <div className="enhanceDes">
+              <p>{enhance.mealDes}</p>
+              <div>
+                <p>Fat: {enhance.fat}</p>
+                <p>protein:{enhance.protein}</p>
+                <p>Carbs:{enhance.carbs}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="enhanceBtn">
+            <button
+              className="mainBannerBtn"
+              onClick={() => {
+                addToCart(enhance);
+              }}
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

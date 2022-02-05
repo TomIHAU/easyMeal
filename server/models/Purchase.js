@@ -31,6 +31,11 @@ Purchase.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    buyDate: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: Date.now,
+    },
   },
   {
     sequelize,

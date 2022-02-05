@@ -37,7 +37,7 @@ export default function About() {
       )}
 
       <div className="aboutDiv aboutMain">
-        <img src="/img/foodTable.jpg"></img>
+        <img src="/img/Mealprep.jpg"></img>
         <div className="aboutText">
           <p>
             At EasyMeal we don't do boring, mass-produced and bland food. We are
@@ -72,10 +72,10 @@ export default function About() {
             experience you will want to soak up.
           </p>
         </div>
-        <img src="/img/foodTable.jpg"></img>
+        <img src="/img/farm.jpg"></img>
       </div>
       <div className="aboutDiv aboutFacts">
-        <img src="/img/foodTable.jpg"></img>
+        <img src="/img/familyeating.jpg"></img>
         <div className="aboutText">
           <h3>Fuelling Aussies Across Australia.</h3>
           <p>

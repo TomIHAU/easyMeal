@@ -33,7 +33,7 @@ code {
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
 }
 a {
   text-decoration: none;
@@ -193,6 +193,7 @@ body {
   height: 140px;
   width: 140px;
   margin: 3px;
+  object-fit: cover;
 }
 .navContent {
   display: none;
@@ -271,7 +272,7 @@ body {
   height: 30%;
 }
 .ourRangeAddBtn {
-  padding: 1px;
+  padding: 2px 3px;
 }
 .mealsContainer {
   display: flex;
@@ -393,8 +394,12 @@ body {
   height: 150px;
   width: 150px;
 }
+.planMealTop img {
+  object-fit: cover;
+}
 .planMealBotHeader {
-  margin: 3px 3px 40px;
+  margin: 3px;
+  height: 40px;
 }
 .planMealPrice {
   margin: 8px;
@@ -455,7 +460,7 @@ body {
   max-width: 30%;
   height: 60%;
   color: var(--puce);
-  background-color: var(--quartz);
+  background-color: var(--mainback);
   overflow: auto;
   padding: 20px;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
@@ -505,6 +510,12 @@ body {
   align-items: center;
   font-size: 17px;
 }
+.AddAllBtn {
+  border-radius: none;
+  border: none;
+  height: 40px;
+  line-height: 2px;
+}
 .planIcon {
   position: relative;
   top: 30px;
@@ -517,6 +528,86 @@ body {
   cursor: pointer;
   font-size: 18px;
 }
+.dashHeader {
+  width: 100%;
+  background-color: var(--mainback);
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoutBtn {
+  position: absolute;
+  right: 0;
+  border-radius: 0 0 0 6px;
+}
+.mealEnhance {
+  margin: 30px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+}
+.mealEnhanceInner {
+  padding: 6px 3px 3px;
+}
+.enhanceClose {
+  font-size: 25px;
+  cursor: pointer;
+}
+.enhanceMain {
+  display: flex;
+  width: 100%;
+}
+.enhanceHead {
+  display: flex;
+  justify-content: space-between;
+}
+.enhanceImgCont {
+  width: 70%;
+}
+.enhanceImgCont img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+.enhanceDes {
+  width: 30%;
+  font-size: 16px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.enhanceBtn {
+  display: flex;
+  justify-content: end;
+}
+select {
+  -webkit-appearance: none;
+  padding: 7px 40px 7px 12px;
+  width: 200px;
+  border: 1px solid #e8eaed;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 1px 3px -2px #9098a9;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 150ms ease;
+}
+
+option {
+  color: #223254;
+}
+
+option:focus {
+  outline: none;
+  border-color: #0077ff;
+  box-shadow: 0 0 0 2px rgba(#0077ff, 0.2);
+}
+
+option:hover {
+  stroke: #0077ff;
+}
+
 @media screen and (max-width: 900px) {
   .dayMeals {
     overflow: auto;

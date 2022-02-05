@@ -11,7 +11,7 @@ export function idbPromise(storeName, method, object) {
     let db, tx, store;
     request.onupgradeneeded = function (e) {
       const db = request.result;
-      db.createObjectStore("cart", { keyPath: "_id" });
+      db.createObjectStore("cart", { keyPath: "id" });
     };
 
     request.onerror = function (e) {
@@ -39,7 +39,7 @@ export function idbPromise(storeName, method, object) {
           };
           break;
         case "delete":
-          store.delete(object._id);
+          store.delete(object.id);
           break;
         default:
           console.log("No valid method");

@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_PLAN_TO_CART } from "../utils/GlobalState/actions";
+import {
+  ADD_PLAN_TO_CART,
+  UPDATE_CART_QUANTITY,
+} from "../utils/GlobalState/actions";
 
 function calculateDayTotal(arr, key, meals) {
   if (meals) {
@@ -32,33 +35,52 @@ export default function PlanTotalBar({ daysOpen, meals }) {
   let products;
   if (state.meals) {
     products = productsId.reduce((acc, cur) => {
-      acc.push(state.meals[cur]);
+      acc.push({ ...state.meals[cur], purchaseQuantity: 1 });
       return acc;
     }, []);
   }
   function sort() {
-    let productTemp = products;
-    let cartTemp = state.cart;
-    for (let i = 0; i < productTemp.length; i++) {
+    const leftOvers = products.reduce((acc, product) => {
       let inCart = false;
-      for (let j = 0; j < cartTemp; j++) {
-        if (productTemp[i].id === cartTemp.id) {
+      state.cart.forEach((cartP) => {
+        if (parseInt(product.id) === parseInt(cartP.id)) {
+          dispatch({
+            type: UPDATE_CART_QUANTITY,
+            id: parseInt(product.id),
+            purchaseQuantity:
+              parseInt(cartP.purchaseQuantity) +
+              parseInt(product.purchaseQuantity),
+          });
           inCart = true;
-          cartTemp.purchaseQuantity += 1;
         }
-      }
+      });
       if (!inCart) {
-        productTemp[i].purchaseQuantity = 1;
-        cartTemp.push(productTemp[i]);
+        acc.push(product);
       }
+      return acc;
+    }, []);
+
+    const consolidated = {};
+
+    for (const num of leftOvers) {
+      consolidated[num.id] = consolidated[num.id]
+        ? consolidated[num.id] + 1
+        : 1;
     }
-    return cartTemp;
+
+    const otherProducts = [];
+
+    for (const meal in consolidated) {
+      otherProducts.push({
+        ...state.meals[meal - 1],
+        purchaseQuantity: consolidated[meal],
+      });
+    }
+    return otherProducts;
   }
   function handleAddAllToCart() {
-    // console.log("hello");
-    // const sortedProducts = sort();
-    // console.log(sortedProducts);
-    dispatch({ type: ADD_PLAN_TO_CART, products });
+    const sortedProducts = sort();
+    dispatch({ type: ADD_PLAN_TO_CART, products: sortedProducts });
   }
   return (
     calculateWeekTotal(daysOpen, "price", meals) > 0 && (
@@ -68,6 +90,7 @@ export default function PlanTotalBar({ daysOpen, meals }) {
         <p>Fat: {calculateWeekTotal(daysOpen, "fat", meals)}</p>
         <p>Price: ${calculateWeekTotal(daysOpen, "price", meals).toFixed(2)}</p>
         <button
+          className="mainBannerBtn AddAllBtn"
           onClick={() => {
             handleAddAllToCart();
           }}

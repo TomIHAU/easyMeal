@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery, useMutation } from "@apollo/client";
 // import { QUERY_CHECKOUT } from "../../utils/queries";
+import { ADD_PRODUCT_ORDER } from "../../utils/mutations";
 import { idbPromise } from "../../utils/helpers";
 import CartItem from "../CartItem";
 import Auth from "../../utils/auth";
@@ -19,7 +20,7 @@ import "./style.css";
 const Cart = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-
+  const [productOrdered, { error }] = useMutation(ADD_PRODUCT_ORDER);
   // const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   // useEffect(() => {
@@ -53,14 +54,27 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
-  function submitCheckout() {
-    const productIds = [];
-
-    state.cart.forEach((item) => {
-      for (let i = 0; i < item.purchaseQuantity; i++) {
-        productIds.push(item._id);
-      }
-    });
+  async function submitCheckout() {
+    try {
+      const { data } = Auth.getProfile();
+      const productIds = [];
+      state.cart.forEach((item) => {
+        for (let i = 0; i < item.purchaseQuantity; i++) {
+          productIds.push(item.id);
+        }
+      });
+      await state.cart.forEach((item) => {
+        productOrdered({
+          variables: {
+            user_id: data.id,
+            meal_id: item.id,
+            qty: item.purchaseQuantity,
+          },
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    }
 
     // getCheckout({
     //   variables: { products: productIds },
@@ -79,8 +93,9 @@ const Cart = () => {
       <h2>Your Cart</h2>
       {state.cart.length ? (
         <div>
+          {console.log(state.cart)}
           {state.cart.map((item) => (
-            <CartItem key={item._id} item={item} />
+            <CartItem key={item.id} item={item} />
           ))}
 
           <div className="flex-row checkoutBtnCont">
