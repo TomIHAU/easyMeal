@@ -15,26 +15,29 @@ const resolvers = {
       const users = await userData.map((Data) => Data.get({ plain: true }));
       return users;
     },
+    user: async (root, args) => {
+      const userData = await User.findByPk(args.id);
+      const user = await userData.get({ plain: true });
+      return user;
+    },
   },
 
   Mutation: {
     addUser: async (root, args) => {
-      console.log(args);
-      const user = await User.create(args);
-      console.log(user);
+      const userData = await User.create(args);
+      const user = await userData.get({ plain: true });
       const token = signToken(user);
-
       return { token, user };
     },
 
     login: async (root, { email, password }) => {
-      const user = await User.findOne({ where: { email } });
-
+      const userData = await User.findOne({ where: { email } });
+      const user = await userData.get({ plain: true });
       if (!user) {
         throw new AuthenticationError("Incorrect credentials");
       }
 
-      const correctPw = await user.checkPassword(password);
+      const correctPw = await userData.checkPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");

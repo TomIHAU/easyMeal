@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_PLAN_TO_CART } from "../utils/GlobalState/actions";
+import {
+  ADD_PLAN_TO_CART,
+  UPDATE_CART_QUANTITY,
+} from "../utils/GlobalState/actions";
 
 function calculateDayTotal(arr, key, meals) {
   if (meals) {
@@ -32,33 +35,36 @@ export default function PlanTotalBar({ daysOpen, meals }) {
   let products;
   if (state.meals) {
     products = productsId.reduce((acc, cur) => {
-      acc.push(state.meals[cur]);
+      acc.push({ ...state.meals[cur], purchaseQuantity: 1 });
       return acc;
     }, []);
   }
   function sort() {
-    let productTemp = products;
-    let cartTemp = state.cart;
-    for (let i = 0; i < productTemp.length; i++) {
+    return products.reduce((acc, product) => {
       let inCart = false;
-      for (let j = 0; j < cartTemp; j++) {
-        if (productTemp[i].id === cartTemp.id) {
+      state.cart.forEach((cartP) => {
+        if (product.id === cartP.id) {
+          dispatch({
+            type: UPDATE_CART_QUANTITY,
+            id: product.id,
+            purchaseQuantity:
+              parseInt(cartP.purchaseQuantity) +
+              parseInt(product.purchaseQuantity),
+          });
           inCart = true;
-          cartTemp.purchaseQuantity += 1;
         }
-      }
+      });
       if (!inCart) {
-        productTemp[i].purchaseQuantity = 1;
-        cartTemp.push(productTemp[i]);
+        acc.push(product);
       }
-    }
-    return cartTemp;
+      return acc;
+    }, []);
   }
   function handleAddAllToCart() {
-    // console.log("hello");
-    // const sortedProducts = sort();
-    // console.log(sortedProducts);
-    dispatch({ type: ADD_PLAN_TO_CART, products });
+    const sortedProducts = sort();
+    console.log(sortedProducts);
+    console.log(state.cart);
+    dispatch({ type: ADD_PLAN_TO_CART, products: sortedProducts });
   }
   return (
     calculateWeekTotal(daysOpen, "price", meals) > 0 && (
@@ -68,6 +74,7 @@ export default function PlanTotalBar({ daysOpen, meals }) {
         <p>Fat: {calculateWeekTotal(daysOpen, "fat", meals)}</p>
         <p>Price: ${calculateWeekTotal(daysOpen, "price", meals).toFixed(2)}</p>
         <button
+          className="mainBannerBtn AddAllBtn"
           onClick={() => {
             handleAddAllToCart();
           }}

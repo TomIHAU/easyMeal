@@ -8,13 +8,14 @@ const typeDefs = gql`
   }
 
   type Auth {
-    token: ID
     user: User
+    token: ID
   }
 
   type Meal {
     id: ID!
     mealName: String!
+    mealDes: String
     protein: Int!
     fat: Int!
     carbs: Int!
@@ -25,6 +26,7 @@ const typeDefs = gql`
   type Query {
     meals: [Meal]!
     users: [User]!
+    user(id: ID): User
   }
 
   type Mutation {

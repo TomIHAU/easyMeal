@@ -11,7 +11,7 @@ const mealData = [
   },
   {
     mealName: "chickenBake",
-    protein: 20,
+    protein: 22,
     fat: 10,
     carbs: 20,
     price: 11.74,
@@ -19,7 +19,7 @@ const mealData = [
   },
   {
     mealName: "ChickenHummus",
-    protein: 50,
+    protein: 45,
     fat: 30,
     carbs: 5,
     price: 9.68,
@@ -27,9 +27,9 @@ const mealData = [
   },
   {
     mealName: "ChickenPasta",
-    protein: 10,
-    fat: 0,
-    carbs: 20,
+    protein: 15,
+    fat: 12,
+    carbs: 22,
     price: 14.21,
     img: "/img/ChickenPasta.jpg",
   },
@@ -59,7 +59,7 @@ const mealData = [
   },
   {
     mealName: "Bibimbap",
-    protein: 40,
+    protein: 41,
     fat: 30,
     carbs: 20,
     price: 9.77,
@@ -67,7 +67,7 @@ const mealData = [
   },
   {
     mealName: "chickenBake",
-    protein: 20,
+    protein: 22,
     fat: 10,
     carbs: 20,
     price: 14.44,
@@ -102,7 +102,7 @@ const mealData = [
     protein: 60,
     fat: 30,
     carbs: 30,
-    price: 10.1,
+    price: 10.14,
     img: "/img/pastaSalad.jpg",
   },
   {

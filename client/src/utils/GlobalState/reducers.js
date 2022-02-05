@@ -177,14 +177,9 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         cartOpen: true,
-        cart: [...action.products],
+        cart: [...state.cart, ...action.products],
       };
     default:
       return state;
   }
 }
-
-// .reduce((acc, cur) => {
-
-//   return acc;
-// }, []),

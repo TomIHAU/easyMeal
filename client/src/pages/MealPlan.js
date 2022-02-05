@@ -28,6 +28,8 @@ export default function MealPlan() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
+  console.log(data);
+  console.log(state);
   useEffect(() => {
     if (data) {
       const meals = data.meals;
@@ -69,7 +71,7 @@ export default function MealPlan() {
               />
             )}
           </div>
-          {day.isOpen && (
+          {day.isOpen && data.meals && (
             <div className="dayMeals" style={{ transition: "0.5s" }}>
               {day.meals.map((meal, index) =>
                 meal === null ? (
@@ -77,7 +79,7 @@ export default function MealPlan() {
                 ) : (
                   <SinglePlanMeal
                     key={index + day.day}
-                    meal={data.meals[meal]}
+                    meal={data?.meals[meal]}
                     mealIndex={index}
                     dayIndex={day.day}
                   />

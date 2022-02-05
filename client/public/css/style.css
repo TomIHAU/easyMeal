@@ -33,7 +33,7 @@ code {
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
 }
 a {
   text-decoration: none;
@@ -193,6 +193,7 @@ body {
   height: 140px;
   width: 140px;
   margin: 3px;
+  object-fit: cover;
 }
 .navContent {
   display: none;
@@ -393,6 +394,9 @@ body {
   height: 150px;
   width: 150px;
 }
+.planMealTop img {
+  object-fit: cover;
+}
 .planMealBotHeader {
   margin: 3px 3px 40px;
 }
@@ -455,7 +459,7 @@ body {
   max-width: 30%;
   height: 60%;
   color: var(--puce);
-  background-color: var(--quartz);
+  background-color: var(--mainback);
   overflow: auto;
   padding: 20px;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
@@ -505,6 +509,12 @@ body {
   align-items: center;
   font-size: 17px;
 }
+.AddAllBtn {
+  border-radius: none;
+  border: none;
+  height: 40px;
+  line-height: 2px;
+}
 .planIcon {
   position: relative;
   top: 30px;
@@ -516,6 +526,19 @@ body {
 .planIconBtn {
   cursor: pointer;
   font-size: 18px;
+}
+.dashHeader {
+  width: 100%;
+  background-color: var(--mainback);
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoutBtn {
+  position: absolute;
+  right: 0;
+  border-radius: 0 0 0 6px;
 }
 @media screen and (max-width: 900px) {
   .dayMeals {

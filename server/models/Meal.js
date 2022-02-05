@@ -15,6 +15,10 @@ Meal.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // mealDes: {
+    //   type: DataTypes.STRING(2000),
+    //   allowNull: true,
+    // },
     protein: {
       type: DataTypes.INTEGER,
       allowNull: false,

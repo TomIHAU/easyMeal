@@ -58,7 +58,7 @@ const Cart = () => {
 
     state.cart.forEach((item) => {
       for (let i = 0; i < item.purchaseQuantity; i++) {
-        productIds.push(item._id);
+        productIds.push(item.id);
       }
     });
 
@@ -79,8 +79,9 @@ const Cart = () => {
       <h2>Your Cart</h2>
       {state.cart.length ? (
         <div>
+          {console.log(state.cart)}
           {state.cart.map((item) => (
-            <CartItem key={item._id} item={item} />
+            <CartItem key={item.id} item={item} />
           ))}
 
           <div className="flex-row checkoutBtnCont">
