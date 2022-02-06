@@ -27,6 +27,7 @@ const typeDefs = gql`
     id: ID!
     user_id: User!
     buyDate: String!
+    purchases: [Purchase]!
   }
 
   type Purchase {

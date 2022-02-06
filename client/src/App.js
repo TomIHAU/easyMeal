@@ -21,6 +21,7 @@ import MainPage from "./pages/MainPage";
 import MealPlan from "./pages/MealPlan";
 import OurRange from "./pages/OurRange";
 import SignUp from "./pages/SignUp";
+import FAQ from "./pages/FAQ";
 
 import Nav from "./components/Nav";
 import Cart from "./components/Cart";
@@ -54,8 +55,9 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/about" element={<About />} />
-            <Route path="/mydashboard" element={<Dash />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/mydashboard" element={<Dash />} />
             <Route path="/ourRange" element={<OurRange />} />
             <Route path="/ourRange/:linkedMeal" element={<OurRange />} />
             <Route path="/plan" element={<MealPlan />} />

@@ -38,6 +38,12 @@ export const QUERY_USER_PURCHASES = gql`
         username
       }
       buyDate
+      purchases {
+        qty
+        meal_id {
+          mealName
+        }
+      }
     }
   }
 `;

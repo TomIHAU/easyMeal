@@ -84,6 +84,13 @@ const resolvers = {
         },
       });
     },
+    purchases(parent) {
+      return Purchase.findAll({
+        where: {
+          purchaseOrder_id: parent.id,
+        },
+      });
+    },
   },
   Purchase: {
     purchaseOrder_id(parent) {

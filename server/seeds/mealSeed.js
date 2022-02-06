@@ -12,6 +12,96 @@ const mealData = [
       "noun. the food served and eaten especially at one of the customary, regular occasions for taking food during the day, as breakfast, lunch, or supper. one of these regular occasions or times for eating food.",
   },
   {
+    mealName: "Vegetable Pasta",
+    protein: 10,
+    fat: 10,
+    carbs: 20,
+    price: 14.74,
+    img: "/img/ChickenPasta.jpg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Satay",
+    protein: 60,
+    fat: 32,
+    carbs: 40,
+    price: 10.12,
+    img: "/img/ChickenSatay.jpg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Salad of Pasta",
+    protein: 60,
+    fat: 20,
+    carbs: 10,
+    price: 10.14,
+    img: "/img/pastaSalad.jpg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Green Salad",
+    protein: 14,
+    fat: 30,
+    carbs: 30,
+    price: 15.16,
+    img: "/img/salad.jpeg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Tomato Soup",
+    protein: 20,
+    fat: 5,
+    carbs: 10,
+    price: 12.16,
+    img: "/img/tomSoup.jpeg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Beef Stew",
+    protein: 40,
+    fat: 40,
+    carbs: 10,
+    price: 15.23,
+    img: "/img/stew.jpeg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Minestrone Soup",
+    protein: 13,
+    fat: 30,
+    carbs: 2,
+    price: 17.16,
+    img: "/img/minestrone.jpeg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Rice and Vegetables",
+    protein: 70,
+    fat: 30,
+    carbs: 30,
+    price: 10.16,
+    img: "/img/rice.jpeg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Tofu Noodles",
+    protein: 10,
+    fat: 9,
+    carbs: 17,
+    price: 9.33,
+    img: "/img/tofuNoodles.jpeg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
     mealName: "Chicken Bake",
     protein: 22,
     fat: 10,
@@ -72,7 +162,7 @@ const mealData = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
-    mealName: "Bibimbap",
+    mealName: "Stir Fry",
     protein: 41,
     fat: 30,
     carbs: 20,
@@ -82,7 +172,7 @@ const mealData = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
-    mealName: "Chicken Bake",
+    mealName: "Baked Chicken",
     protein: 22,
     fat: 10,
     carbs: 20,
@@ -92,7 +182,7 @@ const mealData = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
-    mealName: "Chicken and Hummus",
+    mealName: "Hummus and Chicken",
     protein: 55,
     fat: 30,
     carbs: 5,
@@ -101,43 +191,44 @@ const mealData = [
     mealDes:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
+
   {
-    mealName: "Chicken Pasta",
-    protein: 10,
-    fat: 10,
-    carbs: 20,
-    price: 14.74,
-    img: "/img/ChickenPasta.jpg",
-    mealDes:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    mealName: "Chicken Satay",
-    protein: 60,
+    mealName: "Noodle Stir Fry",
+    protein: 44,
     fat: 32,
-    carbs: 40,
-    price: 10.12,
-    img: "/img/ChickenSatay.jpg",
-    mealDes:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    mealName: "Pasta Salad",
-    protein: 60,
-    fat: 30,
-    carbs: 30,
-    price: 10.14,
-    img: "/img/pastaSalad.jpg",
-    mealDes:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    mealName: "Salad",
-    protein: 70,
-    fat: 30,
-    carbs: 30,
+    carbs: 10,
     price: 10.16,
+    img: "/img/tofuNoodles.jpeg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Green rice",
+    protein: 10,
+    fat: 31,
+    carbs: 13,
+    price: 11.21,
+    img: "/img/rice.jpeg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Green Salad",
+    protein: 12,
+    fat: 30,
+    carbs: 40,
+    price: 12.56,
     img: "/img/salad.jpeg",
+    mealDes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    mealName: "Farmers Stew",
+    protein: 12,
+    fat: 18,
+    carbs: 12,
+    price: 8.56,
+    img: "/img/stew.jpeg",
     mealDes:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },

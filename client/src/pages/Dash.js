@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
+
+import Moment from "react-moment";
 import Auth from "../utils/auth";
 import { QUERY_USER_PURCHASES } from "../utils/queries";
 
@@ -10,8 +12,7 @@ export default function Dash() {
   const { data, loading, error } = useQuery(QUERY_USER_PURCHASES, {
     variables: { user_id: me.data.id },
   });
-  console.log(me);
-  console.log(data);
+
   useEffect(() => {
     if (data) {
       setMyPurchases(data.myPurchases);
@@ -37,19 +38,45 @@ export default function Dash() {
         <h1>Welcome {me.data.username}</h1>
       </div>
       <div className="mainDash">
-        <h2>your orders placed:</h2>
-        <div className="myPurchases">
-          {myPurchases.map((purchase) => {
-            return (
-              <div className="anOrder">
-                <p>{purchase.meal_id.mealName}</p>
-                <p>{purchase.qty}</p>
-                <p>{purchase.buyDate}</p>
-              </div>
-            );
-          })}
-        </div>
-        <h2>your allergies / diet requirements</h2>
+        {myPurchases.length ? (
+          <div>
+            <h2>Current Orders:</h2>
+            <div className="myPurchases">
+              {myPurchases.map((purchase) => {
+                return (
+                  <div className="anOrder">
+                    <div>
+                      Ordered on:{" "}
+                      <Moment format="D MMM">
+                        {parseInt(purchase.buyDate)}
+                      </Moment>
+                    </div>
+                    <div>
+                      {purchase.purchases.map((product) => {
+                        return (
+                          <div>
+                            <p>
+                              {product.qty} {product.meal_id.mealName}
+                              {product.qty > 1 && `'s`}
+                            </p>
+                          </div>
+                        );
+                      })}{" "}
+                    </div>
+                    <div className="anOrderArrive">
+                      <p>Estimated Delivery Date:</p>
+                      <Moment format="D MMM" add={{ days: 6 }}>
+                        {parseInt(purchase.buyDate)}
+                      </Moment>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <h2>No Orders Currently</h2>
+        )}
       </div>
     </div>
   );

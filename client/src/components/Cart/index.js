@@ -74,6 +74,7 @@ const Cart = () => {
           purchases: mapped,
         },
       });
+      window.location.assign("/mydashboard");
     } catch (e) {
       console.log(e);
     }

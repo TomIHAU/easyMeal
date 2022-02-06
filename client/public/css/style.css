@@ -35,6 +35,11 @@ code {
   user-select: none;
   transition: 0.3s ease-in-out;
 }
+body,
+html,
+#root {
+  height: 100%;
+}
 a {
   text-decoration: none;
   color: #000;
@@ -210,15 +215,19 @@ body {
   padding: 0 0 5px;
   font-size: 14px;
 }
+
 .navContent {
   display: none;
   background-color: var(--maincolor);
   position: absolute;
-  padding: 15px;
+  padding: 5px;
   top: 56px;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+}
+.navContent ul li {
+  padding: 3px;
 }
 .planNavDrop {
   padding: 0;
@@ -556,19 +565,30 @@ body {
   align-items: center;
 }
 .mainDash {
-  margin: 5px;
+  margin: 20px;
 }
 .myPurchases {
   display: flex;
   flex-wrap: wrap;
 }
 .anOrder {
+  font-size: 14px;
   margin: 5px;
   padding: 5px;
-  background-color: red;
+  background-color: var(--mainback);
   display: flex;
-
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+  -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+  -moz-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
   flex-direction: column;
+  height: 180px;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+.anOrderArrive {
+  background-color: white;
+  padding: 3px;
 }
 .logoutBtn {
   position: absolute;
@@ -642,7 +662,22 @@ option:focus {
 option:hover {
   stroke: #0077ff;
 }
-
+.FAQ {
+  padding: 15px;
+  min-height: 100%;
+  background-color: var(--mainback);
+}
+.FAQDiv {
+  background-color: white;
+  padding: 15px;
+  font-size: 15px;
+}
+.FAQDiv div {
+  padding: 10px 0;
+}
+.FAQDiv div h4 {
+  margin: 10px 0;
+}
 @media screen and (max-width: 900px) {
   .dayMeals {
     overflow: auto;
@@ -678,12 +713,22 @@ option:hover {
     position: absolute;
     top: 56px;
     left: 0;
-    background-color: #aa1945;
+    background-color: var(--maincolor);
     flex-direction: column;
-    max-width: 50%;
+    width: 40%;
     padding: 0;
   }
-
+  .navSolo:hover {
+    background-color: var(--mainback);
+  }
+  .navContent {
+    background-color: var(--maincolor);
+    top: 60px;
+    left: calc(40% + 50px);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
   .videoSales {
     flex-direction: column;
     height: 600px;
@@ -695,6 +740,10 @@ option:hover {
   .firstSalesLinks {
     margin: 5px 5px 0;
     width: 100%;
+  }
+  .myPurchases {
+    flex-direction: column;
+    align-items: center;
   }
   .dayMeals {
     flex-wrap: wrap;

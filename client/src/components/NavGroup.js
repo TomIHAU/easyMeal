@@ -11,11 +11,9 @@ export default function NavGroup() {
   return (
     <ul className="navGroup">
       <li className="navSolo">
-        <Link to="/ourRange">Meals</Link>
+        <Link to="/ourRange">Menu</Link>
       </li>
-      <li className="navSolo">
-        <Link to="/">links</Link>
-      </li>
+
       <li className="navSolo " onClick={handleShowPlans}>
         Plans
         <div
@@ -24,6 +22,9 @@ export default function NavGroup() {
         >
           <PlanNav />
         </div>
+      </li>
+      <li className="navSolo">
+        <Link to="/FAQ">FAQ</Link>
       </li>
       <li className="navSolo">
         <Link to="/about">About</Link>

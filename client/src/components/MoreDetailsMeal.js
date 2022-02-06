@@ -29,8 +29,18 @@ export default function MoreDetailsMeal({ mealId, setMoreDetails, addToCart }) {
             <div className="enhanceImgCont">
               <img src={`${enhance.img}`} alt={`${enhance.mealName}`} />
             </div>
+
             <div className="enhanceDes">
-              <p>{enhance.mealDes}</p>
+              <p>{enhance.mealDes}</p>{" "}
+              <div>
+                <p>
+                  <strong>Ingredients: </strong>Globe Artichoke, Pearl Couscous
+                  [Durum Wheat Semolina], Pumpkin, Zucchini, Sun-Dried Tomatoes
+                  [Sundried Tomatoes, Canola Oil, Salt, Food Acid (330), Sugar,
+                  Herbs, Garlic, Vinegar, Water], Raisins, Olive Oil, Mixed
+                  Spices, Salt, Black Pepper
+                </p>
+              </div>
               <div>
                 <p>Fat: {enhance.fat}</p>
                 <p>protein:{enhance.protein}</p>
