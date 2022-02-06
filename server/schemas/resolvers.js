@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { Meal, User, Purchase } = require("../models");
+const { Meal, User, Purchase, PurchaseOrder } = require("../models");
 const { signToken } = require("../utils/auth");
 const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
@@ -28,7 +28,7 @@ const resolvers = {
       return purchases;
     },
     myPurchases: async (root, { user_id }) => {
-      const purchaseData = await Purchase.findAll({
+      const purchaseData = await PurchaseOrder.findAll({
         where: {
           user_id,
         },
@@ -61,17 +61,42 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPurchase: async (root, args) => {
-      const purchaseData = await Purchase.create(args);
-      const purchase = await purchaseData.get({ plain: true });
-      return purchase;
+    addPurchase: async (root, { user_id, purchases }) => {
+      const purchaseOrderData = await PurchaseOrder.create({ user_id });
+      const purchaseOrder = await purchaseOrderData.get({ plain: true });
+
+      const added = purchases.map((arg) => {
+        return { ...arg, purchaseOrder_id: purchaseOrder.id };
+      });
+
+      const purchasesData = await Purchase.bulkCreate(added);
+      const cleanPurchases = await purchasesData.map((Data) =>
+        Data.get({ plain: true })
+      );
+      return { ...purchaseOrder, purchase: cleanPurchases };
     },
   },
-  Purchase: {
+  PurchaseOrder: {
     user_id(parent) {
       return User.findOne({
         where: {
           id: parent.user_id,
+        },
+      });
+    },
+    purchases(parent) {
+      return Purchase.findAll({
+        where: {
+          purchaseOrder_id: parent.id,
+        },
+      });
+    },
+  },
+  Purchase: {
+    purchaseOrder_id(parent) {
+      return PurchaseOrder.findOne({
+        where: {
+          id: parent.purchaseOrder_id,
         },
       });
     },

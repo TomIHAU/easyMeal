@@ -38,9 +38,11 @@ export const QUERY_USER_PURCHASES = gql`
         username
       }
       buyDate
-      qty
-      meal_id {
-        mealName
+      purchases {
+        qty
+        meal_id {
+          mealName
+        }
       }
     }
   }

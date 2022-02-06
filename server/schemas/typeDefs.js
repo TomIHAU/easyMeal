@@ -23,12 +23,23 @@ const typeDefs = gql`
     img: String!
   }
 
-  type Purchase {
+  type PurchaseOrder {
     id: ID!
     user_id: User!
+    buyDate: String!
+    purchases: [Purchase]!
+  }
+
+  type Purchase {
+    id: ID!
     meal_id: Meal!
     qty: Int!
-    buyDate: String!
+    purchaseOrder_id: PurchaseOrder!
+  }
+
+  input purchases {
+    meal_id: ID!
+    qty: Int!
   }
 
   type Query {
@@ -36,13 +47,14 @@ const typeDefs = gql`
     users: [User]!
     user(id: ID): User
     purchases: [Purchase]
-    myPurchases(user_id: ID): [Purchase]!
+    myPurchases(user_id: ID): [PurchaseOrder]!
+    allPurchaseOrders: [PurchaseOrder]!
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPurchase(user_id: ID!, meal_id: ID!, qty: Int!): Purchase
+    addPurchase(user_id: ID!, purchases: [purchases]!): PurchaseOrder
   }
 `;
 

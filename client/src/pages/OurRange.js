@@ -15,6 +15,7 @@ import SortSelect from "../components/SortSelect";
 import FilterForm from "../components/FilterForm";
 import SingleMenuMeal from "../components/SingleMenuMeal";
 import MoreDetailsMeal from "../components/MoreDetailsMeal";
+import { useParams } from "react-router-dom";
 
 function filterResults(arr, args) {
   return arr.filter((ele) => {
@@ -43,6 +44,12 @@ export default function OurRange() {
   const [searchResults, setSearchResults] = useState(state.meals);
   const { data } = useQuery(QUERY_MEALS);
 
+  const { linkedMeal } = useParams();
+  useEffect(() => {
+    if (linkedMeal) {
+      setMoreDetails({ show: true, meal: linkedMeal });
+    }
+  }, []);
   useEffect(() => {
     if (data) {
       const meals = data.meals;
@@ -94,10 +101,11 @@ export default function OurRange() {
   ) : (
     <div className="ourRangeOuter">
       <div className="ourRange">
-        <h2 className="ourRangeHeader">Our Range of meals</h2>
-        <FilterForm />
+        <h2 className="ourRangeHeader">Our Range of Meals</h2>
+        <div className="ourRangeSF">
+          <FilterForm /> <SortSelect />
+        </div>
         <div>
-          <SortSelect />
           <div className="mealsContainer">
             {searchResults.map((meal) => {
               return (

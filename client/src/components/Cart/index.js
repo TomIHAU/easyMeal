@@ -21,6 +21,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const [productOrdered, { error }] = useMutation(ADD_PRODUCT_ORDER);
+
   // const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   // useEffect(() => {
@@ -63,15 +64,17 @@ const Cart = () => {
           productIds.push(item.id);
         }
       });
-      await state.cart.forEach((item) => {
-        productOrdered({
-          variables: {
-            user_id: data.id,
-            meal_id: item.id,
-            qty: item.purchaseQuantity,
-          },
-        });
+
+      const mapped = state.cart.map((item) => {
+        return { meal_id: item.id, qty: item.purchaseQuantity };
       });
+      await productOrdered({
+        variables: {
+          user_id: data.id,
+          purchases: mapped,
+        },
+      });
+      window.location.assign("/mydashboard");
     } catch (e) {
       console.log(e);
     }

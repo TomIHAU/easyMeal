@@ -20,7 +20,6 @@ export default function Nav() {
   const [showNav, setShowNav] = useState(false);
 
   function handleShowNav() {
-    console.log(showNav);
     setShowNav(!showNav);
   }
 
@@ -34,7 +33,7 @@ export default function Nav() {
   function toggleCart() {
     dispatch({ type: TOGGLE_CART });
   }
-  //
+
   return (
     <div className="navBar">
       {width > 500 ? (

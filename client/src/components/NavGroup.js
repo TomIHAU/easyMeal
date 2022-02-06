@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PlanNav from "./PlanNav";
 
 export default function NavGroup() {
+  const [showPlans, setShowPlans] = useState(false);
+
+  function handleShowPlans() {
+    setShowPlans(!showPlans);
+  }
   return (
     <ul className="navGroup">
       <li className="navSolo">
-        <Link to="/ourRange">Meals</Link>
+        <Link to="/ourRange">Menu</Link>
       </li>
-      <li className="navSolo">
-        <Link to="/">links</Link>
-      </li>
-      <li className="navSolo navHover">
-        <p>Plans</p>
-        <div className="navContent">
+
+      <li className="navSolo " onClick={handleShowPlans}>
+        Plans
+        <div
+          className="navContent"
+          style={showPlans ? { display: "block" } : { display: "none" }}
+        >
           <PlanNav />
         </div>
+      </li>
+      <li className="navSolo">
+        <Link to="/FAQ">FAQ</Link>
       </li>
       <li className="navSolo">
         <Link to="/about">About</Link>

@@ -1,8 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { REMOVE_DAY_PLAN, RANDOM_DAY_PLAN } from "../utils/GlobalState/actions";
-import { BsTrash } from "react-icons/bs";
-import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
+import { BsTrash, BsShuffle } from "react-icons/bs";
 
 export default function PlanMeal({ meal, dayIndex, mealIndex }) {
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ export default function PlanMeal({ meal, dayIndex, mealIndex }) {
           <p>P:{meal.protein}</p>
         </div>
         <div className="planIcon">
-          <GiPerspectiveDiceSixFacesRandom
+          <BsShuffle
             className="planIconBtn"
             onClick={() => {
               handleRandomItem();

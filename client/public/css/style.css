@@ -35,6 +35,11 @@ code {
   user-select: none;
   transition: 0.3s ease-in-out;
 }
+body,
+html,
+#root {
+  height: 100%;
+}
 a {
   text-decoration: none;
   color: #000;
@@ -83,7 +88,10 @@ body {
   justify-content: space-evenly;
   width: 50%;
 }
-
+.navSolo:hover,
+.navSolo a:hover {
+  color: black;
+}
 .navSolo {
   display: flex;
 }
@@ -95,7 +103,7 @@ body {
 }
 .compTitle {
   font-weight: bolder;
-  font-size: 16px;
+  font-size: 20px;
 }
 .mainBanner {
   color: var(--puce);
@@ -184,35 +192,55 @@ body {
   padding: 13px;
 }
 .firstSalesLinks {
+  margin-top: 10px;
   width: 70%;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 .firstSalesLinks img {
+  cursor: pointer;
   height: 140px;
   width: 140px;
   margin: 3px;
   object-fit: cover;
 }
+.frontPageMealArr {
+  background-color: white;
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+  -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+  -moz-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+}
+.frontPageMealArr p {
+  padding: 0 0 5px;
+  font-size: 14px;
+}
+
 .navContent {
   display: none;
   background-color: var(--maincolor);
   position: absolute;
-  padding: 15px;
+  padding: 5px;
   top: 56px;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
+.navContent ul li {
+  padding: 3px;
+}
+.planNavDrop {
+  padding: 0;
+  font-size: 15px;
+}
 .navSolo {
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
   height: 100%;
   padding: 21px;
 }
-.navSolo:hover .navContent {
-  transition: 2s;
-  display: block;
-}
+
 .onHoverCus,
 .onHoverCus *:hover {
   cursor: pointer;
@@ -240,7 +268,7 @@ body {
 .myVideo {
   width: 100%;
   max-width: 500px;
-  border: 1px solid black;
+  border: 1px solid #a0a0a0;
 }
 
 .preVid {
@@ -274,16 +302,16 @@ body {
 .ourRangeAddBtn {
   padding: 2px 3px;
 }
+.ourRangeSF {
+  display: flex;
+}
 .mealsContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 30px;
 }
-/* aside {
-  height: 80%;
-  width: 30%;
-} */
+
 .loginContainer {
   background-image: url("/img/loginBack.jpg");
   margin: 30px auto;
@@ -365,6 +393,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding-bottom: 5px;
+  transition: all 1s ease-in-out;
 }
 .dayInfo {
   display: flex;
@@ -374,6 +403,7 @@ body {
 .dayMeals {
   display: flex;
   justify-content: space-between;
+  transition: all 1s ease-in-out;
 }
 .planMeal {
   height: 300px;
@@ -415,12 +445,14 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .addMealTop h3 {
   margin: 10px;
   text-align: center;
 }
 .planMealBotChoose {
   background-color: rgb(212, 212, 212);
+  flex-direction: column;
 }
 .aboutDiv {
   background-color: var(--mainback);
@@ -528,6 +560,7 @@ body {
   cursor: pointer;
   font-size: 18px;
 }
+
 .dashHeader {
   width: 100%;
   background-color: var(--mainback);
@@ -535,6 +568,32 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.mainDash {
+  margin: 20px;
+}
+.myPurchases {
+  display: flex;
+  flex-wrap: wrap;
+}
+.anOrder {
+  font-size: 14px;
+  margin: 5px;
+  padding: 5px;
+  background-color: var(--mainback);
+  display: flex;
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+  -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+  -moz-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+  flex-direction: column;
+  min-height: 180px;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+.anOrderArrive {
+  background-color: white;
+  padding: 3px;
 }
 .logoutBtn {
   position: absolute;
@@ -583,6 +642,7 @@ body {
 select {
   -webkit-appearance: none;
   padding: 7px 40px 7px 12px;
+  max-height: 50px;
   width: 200px;
   border: 1px solid #e8eaed;
   border-radius: 5px;
@@ -607,7 +667,34 @@ option:focus {
 option:hover {
   stroke: #0077ff;
 }
-
+.FAQ {
+  padding: 15px;
+  min-height: 100%;
+  background-color: var(--mainback);
+}
+.FAQDiv {
+  background-color: white;
+  padding: 15px;
+  font-size: 15px;
+}
+.FAQDiv div {
+  padding: 10px 0;
+}
+.FAQDiv div h4 {
+  margin: 10px 0;
+}
+.cartItem {
+  margin: 1px;
+}
+.cartItem img {
+  height: 45px;
+  object-fit: cover;
+}
+.checkoutBtnCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 @media screen and (max-width: 900px) {
   .dayMeals {
     overflow: auto;
@@ -643,10 +730,21 @@ option:hover {
     position: absolute;
     top: 56px;
     left: 0;
-    background-color: #aa1945;
+    background-color: var(--maincolor);
     flex-direction: column;
-    max-width: 50%;
+    width: 40%;
     padding: 0;
+  }
+  .navSolo:hover {
+    background-color: var(--mainback);
+  }
+  .navContent {
+    background-color: var(--maincolor);
+    top: 60px;
+    left: calc(40% + 50px);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
   }
   .videoSales {
     flex-direction: column;
@@ -655,6 +753,14 @@ option:hover {
   .videoHalf {
     height: 50%;
     width: 100%;
+  }
+  .firstSalesLinks {
+    margin: 5px 5px 0;
+    width: 100%;
+  }
+  .myPurchases {
+    flex-direction: column;
+    align-items: center;
   }
   .dayMeals {
     flex-wrap: wrap;
