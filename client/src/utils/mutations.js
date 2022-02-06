@@ -27,16 +27,26 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_PRODUCT_ORDER = gql`
-  mutation addPurchase($user_id: ID!, $meal_id: ID!, $qty: Int!) {
-    addPurchase(user_id: $user_id, meal_id: $meal_id, qty: $qty) {
-      qty
+  mutation addPurchase($user_id: ID!, $purchases: [purchases]!) {
+    addPurchase(user_id: $user_id, purchases: $purchases) {
       buyDate
       user_id {
         username
       }
-      meal_id {
-        mealName
-      }
     }
   }
 `;
+
+// export const
+// mutation addPurchase($user_id: ID!, $meal_id: ID!, $qty: Int!) {
+//     addPurchase(user_id: $user_id, meal_id: $meal_id, qty: $qty) {
+//       qty
+//       buyDate
+//       user_id {
+//         username
+//       }
+//       meal_id {
+//         mealName
+//       }
+//     }
+//   }

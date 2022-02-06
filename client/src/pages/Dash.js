@@ -10,20 +10,22 @@ export default function Dash() {
   const { data, loading, error } = useQuery(QUERY_USER_PURCHASES, {
     variables: { user_id: me.data.id },
   });
-
+  console.log(me);
+  console.log(data);
   useEffect(() => {
     if (data) {
       setMyPurchases(data.myPurchases);
     }
-  }, [data]);
+  }, [data, data?.myPurchases]);
 
   if (loading) {
     return <div>loading...</div>;
   }
+
   if (error) return `Error! ${error.message}`;
 
   return (
-    <div className="About">
+    <div className="about">
       <button
         className="mainBannerBtn logoutBtn"
         href="/"
@@ -34,19 +36,21 @@ export default function Dash() {
       <div className="dashHeader">
         <h1>Welcome {me.data.username}</h1>
       </div>
-      <div className="myPurchases">
+      <div className="mainDash">
         <h2>your orders placed:</h2>
-        {myPurchases.map((purchase) => {
-          return (
-            <div>
-              {purchase.meal_id.mealName}
-              {purchase.qty}
-              {purchase.buyDate}
-            </div>
-          );
-        })}
+        <div className="myPurchases">
+          {myPurchases.map((purchase) => {
+            return (
+              <div className="anOrder">
+                <p>{purchase.meal_id.mealName}</p>
+                <p>{purchase.qty}</p>
+                <p>{purchase.buyDate}</p>
+              </div>
+            );
+          })}
+        </div>
+        <h2>your allergies / diet requirements</h2>
       </div>
-      <h2>your allergies / diet requirements</h2>
     </div>
   );
 }

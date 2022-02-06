@@ -555,6 +555,21 @@ body {
   justify-content: center;
   align-items: center;
 }
+.mainDash {
+  margin: 5px;
+}
+.myPurchases {
+  display: flex;
+  flex-wrap: wrap;
+}
+.anOrder {
+  margin: 5px;
+  padding: 5px;
+  background-color: red;
+  display: flex;
+
+  flex-direction: column;
+}
 .logoutBtn {
   position: absolute;
   right: 0;
