@@ -55,7 +55,7 @@ export default function MainPage() {
           </video>
         </div>
       </div>
-      <div className="firstSales">
+      <div className="firstSales firstLinkSales">
         <h2>Try our Amazing Range of Products!</h2>
         <p>
           Amazing range of lorem ipsum healthy food which our chefs have lorem
@@ -64,8 +64,10 @@ export default function MainPage() {
         <div className="firstSalesLinks">
           {mealArr.map((meal) => {
             return (
-              <div key={meal.id}>
-                <img src={meal.img} alt={meal.mealName} />
+              <div key={meal.id} className="frontPageMealArr">
+                <Link to={`/ourRange/${meal.id}`}>
+                  <img src={meal.img} alt={meal.mealName} />
+                </Link>
                 <p>{meal.mealName}</p>
               </div>
             );

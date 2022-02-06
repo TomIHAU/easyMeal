@@ -57,7 +57,9 @@ function App() {
             <Route path="/mydashboard" element={<Dash />} />
             <Route path="/login" element={<Login />} />
             <Route path="/ourRange" element={<OurRange />} />
+            <Route path="/ourRange/:linkedMeal" element={<OurRange />} />
             <Route path="/plan" element={<MealPlan />} />
+            <Route path="/plan/:planId" element={<MealPlan />} />
             <Route
               path="/plan/add/:dayIndex/:mealIndex"
               element={<PlanAdd />}

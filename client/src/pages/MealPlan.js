@@ -4,13 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "@apollo/client";
 import { QUERY_MEALS } from "../utils/queries";
 import { UPDATE_MEALS } from "../utils/GlobalState/actions";
+import { plans } from "../utils/plans";
 
 import AddMealBtn from "../components/AddMealBtn";
 import SinglePlanMeal from "../components/SinglePlanMeal";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
-import { TOGGLE_SHOW_DAY } from "../utils/GlobalState/actions";
+import { TOGGLE_SHOW_DAY, NEW_DAY_PLAN } from "../utils/GlobalState/actions";
 import PlanTotalBar from "../components/PlanTotalBar";
+import { useParams } from "react-router-dom";
 
 function calculateDayTotal(arr, key, meals) {
   if (meals) {
@@ -28,8 +30,15 @@ export default function MealPlan() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  console.log(data);
-  console.log(state);
+  const { planId } = useParams();
+
+  useEffect(() => {
+    if (planId) {
+      console.log(planId);
+      dispatch({ type: NEW_DAY_PLAN, plan: plans[planId - 1] });
+    }
+  }, [dispatch, planId]);
+
   useEffect(() => {
     if (data) {
       const meals = data.meals;

@@ -12,6 +12,7 @@ import {
   UPDATE_FILTER,
   UPDATE_SORT,
   TOGGLE_SHOW_DAY,
+  NEW_DAY_PLAN,
   UPDATE_DAY_PLAN,
   REMOVE_DAY_PLAN,
   RANDOM_DAY_PLAN,
@@ -28,7 +29,7 @@ const initialState = {
   filters: [],
   sort: "",
   plan: [
-    { day: 1, isOpen: true, meals: [4, null, null, null, null] },
+    { day: 1, isOpen: true, meals: [null, null, null, null, null] },
     { day: 2, isOpen: true, meals: [null, null, null, null, null] },
     { day: 3, isOpen: true, meals: [null, null, null, null, null] },
     { day: 4, isOpen: true, meals: [null, null, null, null, null] },
@@ -128,6 +129,11 @@ export default function reducer(state = initialState, action) {
           }
           return ele;
         }),
+      };
+    case NEW_DAY_PLAN:
+      return {
+        ...state,
+        plan: [...action.plan],
       };
     case UPDATE_DAY_PLAN:
       return {

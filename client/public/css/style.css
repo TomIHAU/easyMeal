@@ -83,7 +83,10 @@ body {
   justify-content: space-evenly;
   width: 50%;
 }
-
+.navSolo:hover,
+.navSolo a:hover {
+  color: black;
+}
 .navSolo {
   display: flex;
 }
@@ -95,7 +98,7 @@ body {
 }
 .compTitle {
   font-weight: bolder;
-  font-size: 16px;
+  font-size: 20px;
 }
 .mainBanner {
   color: var(--puce);
@@ -184,16 +187,28 @@ body {
   padding: 13px;
 }
 .firstSalesLinks {
+  margin-top: 10px;
   width: 70%;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 .firstSalesLinks img {
+  cursor: pointer;
   height: 140px;
   width: 140px;
   margin: 3px;
   object-fit: cover;
+}
+.frontPageMealArr {
+  background-color: white;
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+  -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+  -moz-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+}
+.frontPageMealArr p {
+  padding: 0 0 5px;
+  font-size: 14px;
 }
 .navContent {
   display: none;
@@ -205,14 +220,18 @@ body {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
+.planNavDrop {
+  padding: 0;
+  font-size: 15px;
+}
 .navSolo {
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
   height: 100%;
   padding: 21px;
 }
-.navSolo:hover .navContent {
-  transition: 2s;
-  display: block;
-}
+
 .onHoverCus,
 .onHoverCus *:hover {
   cursor: pointer;
@@ -240,7 +259,7 @@ body {
 .myVideo {
   width: 100%;
   max-width: 500px;
-  border: 1px solid black;
+  border: 1px solid #a0a0a0;
 }
 
 .preVid {
@@ -274,16 +293,16 @@ body {
 .ourRangeAddBtn {
   padding: 2px 3px;
 }
+.ourRangeSF {
+  display: flex;
+}
 .mealsContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 30px;
 }
-/* aside {
-  height: 80%;
-  width: 30%;
-} */
+
 .loginContainer {
   background-image: url("/img/loginBack.jpg");
   margin: 30px auto;
@@ -583,6 +602,7 @@ body {
 select {
   -webkit-appearance: none;
   padding: 7px 40px 7px 12px;
+  max-height: 50px;
   width: 200px;
   border: 1px solid #e8eaed;
   border-radius: 5px;
@@ -648,12 +668,17 @@ option:hover {
     max-width: 50%;
     padding: 0;
   }
+
   .videoSales {
     flex-direction: column;
     height: 600px;
   }
   .videoHalf {
     height: 50%;
+    width: 100%;
+  }
+  .firstSalesLinks {
+    margin: 5px 5px 0;
     width: 100%;
   }
   .dayMeals {
