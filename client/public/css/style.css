@@ -613,11 +613,25 @@ body {
   cursor: pointer;
   font-size: 18px;
 }
-.shippingFrom {
+.formCover {
   position: absolute;
-  z-index: 2;
   background-color: white;
   height: 150px;
+  z-index: 2;
+  width: 100%;
+}
+.shippingForm {
+  display: flex;
+  flex-direction: column;
+
+  width: 300px;
+}
+.shippingForm input {
+  padding: 3px 5px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 400px;
 }
 .dashHeader {
   width: 100%;
@@ -630,14 +644,18 @@ body {
 .mainDash {
   margin: 20px;
 }
+.shownAddress {
+  font-size: 140%;
+}
 .myPurchases {
+  padding: 8px;
   display: flex;
   flex-wrap: wrap;
 }
 .myDashSec {
   border-bottom: 1px solid #808080;
   padding: 8px;
-  min-height: 180px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

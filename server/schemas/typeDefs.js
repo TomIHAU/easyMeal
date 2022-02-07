@@ -5,7 +5,14 @@ const typeDefs = gql`
     id: ID!
     username: String!
     email: String!
-    address: String
+    address: Address
+  }
+
+  type Address {
+    id: ID!
+    user_id: ID!
+    street: String!
+    postcode: Int!
   }
 
   type Auth {
@@ -56,8 +63,9 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addPurchase(user_id: ID!, purchases: [purchases]!): PurchaseOrder
-    addUserAddress(user_id: ID!, address: String!): User
+    addUserAddress(user_id: ID!, street: String!, postcode: Int!): User
     removeUserAddress(user_id: ID!): User
+    editEmail(user_id: ID!, email: String!): User
   }
 `;
 

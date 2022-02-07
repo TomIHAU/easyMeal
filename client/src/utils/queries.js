@@ -12,7 +12,10 @@ export const QUERY_ONE_USERS = gql`
   query user($id: ID!) {
     user(id: $id) {
       username
-      address
+      address {
+        street
+        postcode
+      }
       email
     }
   }

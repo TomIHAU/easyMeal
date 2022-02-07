@@ -2,6 +2,15 @@ const Meal = require("./Meal");
 const User = require("./User");
 const Purchase = require("./Purchase");
 const PurchaseOrder = require("./PurchaseOrder");
+const Address = require("./Address");
+
+User.hasOne(Address, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+Address.belongsTo(User, {
+  foreignKey: "user_id",
+});
 
 User.hasMany(PurchaseOrder, {
   foreignKey: "user_id",
@@ -27,4 +36,4 @@ Purchase.belongsTo(Meal, {
   foreignKey: "meal_id",
 });
 
-module.exports = { Meal, User, Purchase, PurchaseOrder };
+module.exports = { Meal, User, Purchase, PurchaseOrder, Address };

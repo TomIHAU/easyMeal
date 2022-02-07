@@ -21,10 +21,6 @@ User.init(
       allowNull: false,
       unique: true,
     },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
