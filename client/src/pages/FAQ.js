@@ -7,6 +7,7 @@ export default function FAQ() {
         <div>
           <h2>Frequently Asked Questions</h2>
         </div>
+
         <div>
           <h4>Do I get to choose my meals?</h4>
           <p>
@@ -15,18 +16,6 @@ export default function FAQ() {
             week via your Meal Planner; simply make sure you update your meal
             preferences for your upcoming order prior to your weekly cutoff
             (you’ll receive a weekly cutoff email reminder each week).
-          </p>
-        </div>
-        <div>
-          <h4>
-            Do I need to be home to accept my EasyMeal meals when they arrive?
-          </h4>
-          <p>
-            No, as our third party carriers will leave your delivery box at your
-            door, with no signature required. Our insulated boxes contain ice
-            packs to ensure your meals stay nice and cold until you get home.
-            Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare
-            massa. Eget sit amet tellus cras adipiscing enim eu turpis egestas.
           </p>
         </div>
         <div>
@@ -43,6 +32,19 @@ export default function FAQ() {
             in mollis nunc sed id.
           </p>
         </div>
+        <div>
+          <h4>
+            Do I need to be home to accept my EasyMeal meals when they arrive?
+          </h4>
+          <p>
+            No, as our third party carriers will leave your delivery box at your
+            door, with no signature required. Our insulated boxes contain ice
+            packs to ensure your meals stay nice and cold until you get home.
+            Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare
+            massa. Eget sit amet tellus cras adipiscing enim eu turpis egestas.
+          </p>
+        </div>
+
         <div>
           <h4>Is there any cooking involved? Are your meals pre-portioned?</h4>
           <p>

@@ -12,6 +12,7 @@ import FilterForm from "../components/FilterForm";
 import SingleAddMeal from "../components/SingleAddMeal";
 import MoreDetailsMeal from "../components/MoreDetailsMeal";
 import PlanTotalBar from "../components/PlanTotalBar";
+import SortDirectionComp from "../components/SortDirectionComp";
 
 function filterResults(arr, args) {
   return arr.filter((ele) => {
@@ -61,10 +62,6 @@ export default function PlanAdd() {
       : setSearchResults(sorted.reverse());
   }, [state.sort, state.filters, state.meals, sortDirection]);
 
-  function handleSortDirection() {
-    setSortDirection(!sortDirection);
-  }
-
   function handleShowMoreDetails(mealArg) {
     setMoreDetails({
       show: true,
@@ -82,21 +79,11 @@ export default function PlanAdd() {
       <div className="ourRange">
         <h2 className="ourRangeHeader">Our Range of Meals</h2>
         <div className="ourRangeSF">
-          <FilterForm />
           <SortSelect />
-          <div className="directionBtn" onClick={handleSortDirection}>
-            {sortDirection ? (
-              <div>
-                <BsChevronDown />
-                Low to High
-              </div>
-            ) : (
-              <div>
-                <BsChevronUp />
-                High to Low
-              </div>
-            )}
-          </div>
+          <SortDirectionComp
+            sortDirection={sortDirection}
+            setSortDirection={setSortDirection}
+          />
         </div>
         <div>
           <div className="mealsContainer">

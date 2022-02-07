@@ -102,7 +102,6 @@ const Cart = () => {
       <h2>Your Cart</h2>
       {state.cart.length ? (
         <div>
-          {console.log(state.cart)}
           {state.cart.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
