@@ -29,10 +29,11 @@ export default function MealPlan() {
   const { loading, data } = useQuery(QUERY_MEALS);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [showBanner, setShowBanner] = useState(true);
   const { planId } = useParams();
+  const [showBanner, setShowBanner] = useState(true);
 
   function resetPlan() {
+    console.log("planReset????", plans[0]);
     dispatch({ type: NEW_DAY_PLAN, plan: plans[0] });
   }
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function MealPlan() {
       dispatch({ type: UPDATE_MEALS, meals });
     }
   }, [data, dispatch]);
+
   const daysOpen = state.plan;
 
   const handleShowDay = (index) => {
@@ -56,7 +58,7 @@ export default function MealPlan() {
   if (loading) {
     return <p>loading...</p>;
   }
-  console.log(state.plan);
+
   return (
     <div className="mealPlan">
       {showBanner && (
@@ -88,9 +90,11 @@ export default function MealPlan() {
         {showBanner ? "hide" : "show"}
       </p>
       {!planId && (
-        <button onClick={resetPlan} className="startOverBtn">
-          Start again
-        </button>
+        <div className="startOverBtnCont">
+          <button onClick={resetPlan} className="mainBannerBtn startOverBtn">
+            Start again
+          </button>
+        </div>
       )}
       {daysOpen.map((day, index) => (
         <div key={day.day} className="day">
