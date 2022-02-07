@@ -195,7 +195,7 @@ body {
 }
 .firstSalesLinks {
   margin-top: 10px;
-  width: 70%;
+  width: 80%;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -212,6 +212,7 @@ body {
   box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
   -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
   -moz-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.48);
+  margin: 10px;
 }
 .frontPageMealArr p {
   padding: 0 0 5px;
@@ -398,7 +399,32 @@ body {
 #signForm {
   height: 340px;
 }
-.loginUnder a {
+.mealPlanIntro {
+  height: 270px;
+  background-color: var(--mainback);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mealPlanIntro * {
+  padding: 20px;
+  width: 60%;
+}
+.mealPlanIntro p {
+  font-size: 16px;
+}
+.mealPlanBannerText {
+  text-align: center;
+  color: white;
+  text-shadow: 0px 0px 5px #000000;
+}
+.hidePlanBanner {
+  font-size: 16px;
+  position: absolute;
+  left: 5px;
 }
 .day {
   width: 90%;
@@ -654,6 +680,9 @@ body {
 .enhanceBtn {
   display: flex;
   justify-content: end;
+}
+.ingList {
+  font-size: 12px;
 }
 select {
   -webkit-appearance: none;

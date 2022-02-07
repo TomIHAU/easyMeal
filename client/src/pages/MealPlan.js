@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_MEALS } from "../utils/queries";
 import { UPDATE_MEALS } from "../utils/GlobalState/actions";
-import { plans } from "../utils/plans";
+import { plans, planBanner } from "../utils/plans";
 
 import AddMealBtn from "../components/AddMealBtn";
 import SinglePlanMeal from "../components/SinglePlanMeal";
@@ -29,13 +29,15 @@ export default function MealPlan() {
   const { loading, data } = useQuery(QUERY_MEALS);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
+  const [showBanner, setShowBanner] = useState(true);
   const { planId } = useParams();
 
+  function resetPlan() {
+    dispatch({ type: NEW_DAY_PLAN, plan: plans[0] });
+  }
   useEffect(() => {
     if (planId) {
-      console.log(planId);
-      dispatch({ type: NEW_DAY_PLAN, plan: plans[planId - 1] });
+      dispatch({ type: NEW_DAY_PLAN, plan: plans[planId] });
     }
   }, [dispatch, planId]);
 
@@ -54,9 +56,42 @@ export default function MealPlan() {
   if (loading) {
     return <p>loading...</p>;
   }
-
+  console.log(state.plan);
   return (
     <div className="mealPlan">
+      {showBanner && (
+        <div
+          className="mealPlanIntro"
+          style={
+            planId
+              ? { backgroundImage: `url(${planBanner[planId - 1].background})` }
+              : { backgroundImage: `url("/img/bannerCustom.jpg")` }
+          }
+        >
+          <h1 className="mealPlanBannerText">
+            {planId ? planBanner[planId - 1].title : "Custom Plan"}
+          </h1>
+          <p className="mealPlanBannerText">
+            {planId
+              ? planBanner[planId - 1].desc
+              : "You can use this space to plan out your weeks meals."}
+          </p>
+        </div>
+      )}
+      <p
+        className="mealPlanBannerText hidePlanBanner"
+        style={!showBanner ? { top: "60px" } : { top: "305px" }}
+        onClick={() => {
+          setShowBanner(!showBanner);
+        }}
+      >
+        {showBanner ? "hide" : "show"}
+      </p>
+      {!planId && (
+        <button onClick={resetPlan} className="startOverBtn">
+          Start again
+        </button>
+      )}
       {daysOpen.map((day, index) => (
         <div key={day.day} className="day">
           <div className="dayHeader">

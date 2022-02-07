@@ -33,7 +33,7 @@ export default function MoreDetailsMeal({ mealId, setMoreDetails, addToCart }) {
             <div className="enhanceDes">
               <p>{enhance.mealDes}</p>{" "}
               <div>
-                <p>
+                <p className="ingList">
                   <strong>Ingredients: </strong>Globe Artichoke, Pearl Couscous
                   [Durum Wheat Semolina], Pumpkin, Zucchini, Sun-Dried Tomatoes
                   [Sundried Tomatoes, Canola Oil, Salt, Food Acid (330), Sugar,
