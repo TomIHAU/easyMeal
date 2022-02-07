@@ -38,10 +38,13 @@ export const ADD_PRODUCT_ORDER = gql`
 `;
 
 export const ADD_ADDRESS = gql`
-  mutation addUserAddress($user_id: ID!, $address: String!) {
-    addUserAddress(user_id: $user_id, address: $address) {
+  mutation addUserAddress($user_id: ID!, $street: String!, $postcode: Int!) {
+    addUserAddress(user_id: $user_id, street: $street, postcode: $postcode) {
       username
-      address
+      address {
+        street
+        postcode
+      }
     }
   }
 `;
@@ -49,7 +52,10 @@ export const REMOVE_ADDRESS = gql`
   mutation removeUserAddress($user_id: ID!) {
     removeUserAddress(user_id: $user_id) {
       username
-      address
+      address {
+        street
+        postcode
+      }
     }
   }
 `;

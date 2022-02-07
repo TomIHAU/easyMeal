@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { Meal, User, Purchase, PurchaseOrder } = require("../models");
+const { Meal, User, Purchase, PurchaseOrder, Address } = require("../models");
 const { signToken } = require("../utils/auth");
 const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
@@ -75,32 +75,51 @@ const resolvers = {
       );
       return { ...purchaseOrder, purchase: cleanPurchases };
     },
-    addUserAddress: async (root, { user_id, address }) => {
-      console.log(user_id, address);
-      const updated = await User.update(
-        { address },
-        {
-          where: {
-            id: user_id,
-          },
-        }
-      );
+    addUserAddress: async (root, { user_id, street, postcode }) => {
+      const addressExists = await Address.findOne({
+        where: {
+          user_id,
+        },
+      });
+
+      if (!addressExists) {
+        const Data = await Address.create({
+          user_id,
+          street,
+          postcode,
+        });
+      } else {
+        const Data = await Address.update(
+          { street, postcode },
+          { where: { user_id } }
+        );
+      }
+
       const userData = await User.findByPk(user_id);
       const user = await userData.get({ plain: true });
       return user;
     },
     removeUserAddress: async (root, { user_id }) => {
-      const updated = await User.update(
-        { address: null },
-        {
-          where: {
-            id: user_id,
-          },
-        }
-      );
+      const addressData = await Address.findOne({
+        where: {
+          user_id,
+        },
+      });
+
+      await addressData.destroy();
+
       const userData = await User.findByPk(user_id);
       const user = await userData.get({ plain: true });
       return user;
+    },
+  },
+  User: {
+    address(parent) {
+      return Address.findOne({
+        where: {
+          user_id: parent.id,
+        },
+      });
     },
   },
   PurchaseOrder: {
