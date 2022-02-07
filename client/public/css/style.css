@@ -421,6 +421,9 @@ body {
   padding: 20px;
   width: 60%;
 }
+.mealPlan {
+  padding-bottom: 60px;
+}
 .mealPlanIntro p {
   font-size: 16px;
 }
@@ -747,6 +750,22 @@ option:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+table,
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 5px;
 }
 @media screen and (max-width: 900px) {
   .dayMeals {
