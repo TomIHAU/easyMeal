@@ -2,7 +2,7 @@
   position: fixed;
   top: 56px;
   right: 0;
-  min-width: 20%;
+  min-width: 250px;
   max-width: 30%;
   max-height: 60%;
   background-color: white;
@@ -19,10 +19,13 @@
   padding-bottom: 8px;
   margin: 16px 0;
 }
-
+.clearBtn {
+  padding: 3px;
+  font-size: 12px;
+}
 .cart .close {
   position: absolute;
-  font-size: 16px;
+  font-size: 18px;
   top: 8px;
   right: 8px;
   cursor: pointer;
@@ -54,6 +57,15 @@
 .checkoutBtn {
   padding: 2px;
 }
+.cartDetails {
+  width: 100%;
+}
+.cartNamePrice {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 @media screen and (max-width: 768px) {
   .cart {
     top: 0;

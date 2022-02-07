@@ -6,10 +6,10 @@ import { QUERY_MEALS } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
 import {
   UPDATE_MEALS,
-  UPDATE_PRODUCTS,
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
 } from "../utils/GlobalState/actions";
+import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 
 import SortSelect from "../components/SortSelect";
 import FilterForm from "../components/FilterForm";
@@ -40,7 +40,7 @@ export default function OurRange() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [MoreDetails, setMoreDetails] = useState({ show: false, meal: 0 });
-
+  const [sortDirection, setSortDirection] = useState(false);
   const [searchResults, setSearchResults] = useState(state.meals);
   const { data } = useQuery(QUERY_MEALS);
 
@@ -60,9 +60,13 @@ export default function OurRange() {
   useEffect(() => {
     const filtered = filterResults(state.meals, state.filters);
     const sorted = sortResults(filtered, state.sort);
-    setSearchResults(sorted);
-  }, [state.sort, state.filters, state.meals]);
-
+    sortDirection
+      ? setSearchResults(sorted)
+      : setSearchResults(sorted.reverse());
+  }, [state.sort, state.filters, state.meals, sortDirection]);
+  function handleSortDirection() {
+    setSortDirection(!sortDirection);
+  }
   const { cart } = state;
   const addToCart = (meal) => {
     const itemInCart = cart.find((cartItem) => cartItem.id === meal.id);
@@ -104,6 +108,19 @@ export default function OurRange() {
         <h2 className="ourRangeHeader">Our Range of Meals</h2>
         <div className="ourRangeSF">
           <FilterForm /> <SortSelect />
+          <div className="directionBtn" onClick={handleSortDirection}>
+            {sortDirection ? (
+              <div>
+                <BsChevronDown />
+                Low to High
+              </div>
+            ) : (
+              <div>
+                <BsChevronUp />
+                High to Low
+              </div>
+            )}
+          </div>
         </div>
         <div>
           <div className="mealsContainer">
