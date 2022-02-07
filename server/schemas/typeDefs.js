@@ -65,6 +65,7 @@ const typeDefs = gql`
     addPurchase(user_id: ID!, purchases: [purchases]!): PurchaseOrder
     addUserAddress(user_id: ID!, street: String!, postcode: Int!): User
     removeUserAddress(user_id: ID!): User
+    editEmail(user_id: ID!, email: String!): User
   }
 `;
 

@@ -48,9 +48,22 @@ export const ADD_ADDRESS = gql`
     }
   }
 `;
+
 export const REMOVE_ADDRESS = gql`
   mutation removeUserAddress($user_id: ID!) {
     removeUserAddress(user_id: $user_id) {
+      username
+      address {
+        street
+        postcode
+      }
+    }
+  }
+`;
+
+export const EDIT_EMAIL = gql`
+  mutation editEmail($user_id: ID!, $email: String!) {
+    editEmail(user_id: $user_id, email: $email) {
       username
       address {
         street

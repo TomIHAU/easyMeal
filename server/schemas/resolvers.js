@@ -112,6 +112,19 @@ const resolvers = {
       const user = await userData.get({ plain: true });
       return user;
     },
+    editEmail: async (root, { user_id, email }) => {
+      await User.update(
+        { email },
+        {
+          where: {
+            id: user_id,
+          },
+        }
+      );
+      const userData = await User.findByPk(user_id);
+      const user = await userData.get({ plain: true });
+      return user;
+    },
   },
   User: {
     address(parent) {
