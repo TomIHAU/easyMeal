@@ -613,7 +613,12 @@ body {
   cursor: pointer;
   font-size: 18px;
 }
-
+.shippingFrom {
+  position: absolute;
+  z-index: 2;
+  background-color: white;
+  height: 150px;
+}
 .dashHeader {
   width: 100%;
   background-color: var(--mainback);

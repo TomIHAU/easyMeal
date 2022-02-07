@@ -9,9 +9,11 @@ export const QUERY_ALL_USERS = gql`
 `;
 
 export const QUERY_ONE_USERS = gql`
-  query user($id: Int!) {
+  query user($id: ID!) {
     user(id: $id) {
       username
+      address
+      email
     }
   }
 `;
