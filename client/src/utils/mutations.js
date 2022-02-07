@@ -37,16 +37,19 @@ export const ADD_PRODUCT_ORDER = gql`
   }
 `;
 
-// export const
-// mutation addPurchase($user_id: ID!, $meal_id: ID!, $qty: Int!) {
-//     addPurchase(user_id: $user_id, meal_id: $meal_id, qty: $qty) {
-//       qty
-//       buyDate
-//       user_id {
-//         username
-//       }
-//       meal_id {
-//         mealName
-//       }
-//     }
-//   }
+export const ADD_ADDRESS = gql`
+  mutation addUserAddress($user_id: ID!, $address: String!) {
+    addUserAddress(user_id: $user_id, address: $address) {
+      username
+      address
+    }
+  }
+`;
+export const REMOVE_ADDRESS = gql`
+  mutation removeUserAddress($user_id: ID!) {
+    removeUserAddress(user_id: $user_id) {
+      username
+      address
+    }
+  }
+`;

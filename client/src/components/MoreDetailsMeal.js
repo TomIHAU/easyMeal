@@ -33,7 +33,7 @@ export default function MoreDetailsMeal({ mealId, setMoreDetails, addToCart }) {
             <div className="enhanceDes">
               <p>{enhance.mealDes}</p>{" "}
               <div>
-                <p>
+                <p className="ingList">
                   <strong>Ingredients: </strong>Globe Artichoke, Pearl Couscous
                   [Durum Wheat Semolina], Pumpkin, Zucchini, Sun-Dried Tomatoes
                   [Sundried Tomatoes, Canola Oil, Salt, Food Acid (330), Sugar,
@@ -42,9 +42,32 @@ export default function MoreDetailsMeal({ mealId, setMoreDetails, addToCart }) {
                 </p>
               </div>
               <div>
-                <p>Fat: {enhance.fat}</p>
-                <p>protein:{enhance.protein}</p>
-                <p>Carbs:{enhance.carbs}</p>
+                <table>
+                  <tr>
+                    <td>Fat, Total</td>
+                    <td>{enhance.fat}</td>
+                  </tr>
+                  <tr>
+                    <td>Fat, Saturated</td>
+                    <td>{enhance.fat - 2}</td>
+                  </tr>
+                  <tr>
+                    <td>Carbs</td>
+                    <td>{enhance.carbs}</td>
+                  </tr>
+                  <tr>
+                    <td>Sugars</td>
+                    <td>{enhance.carbs - 1}</td>
+                  </tr>
+                  <tr>
+                    <td>Protein</td>
+                    <td>{enhance.protein}</td>
+                  </tr>
+                  <tr>
+                    <td>Sodium</td>
+                    <td>{Math.floor(Math.random() * 1000 + 1)}mg</td>
+                  </tr>
+                </table>
               </div>
             </div>
           </div>

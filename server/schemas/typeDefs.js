@@ -5,6 +5,7 @@ const typeDefs = gql`
     id: ID!
     username: String!
     email: String!
+    address: String
   }
 
   type Auth {
@@ -55,6 +56,8 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addPurchase(user_id: ID!, purchases: [purchases]!): PurchaseOrder
+    addUserAddress(user_id: ID!, address: String!): User
+    removeUserAddress(user_id: ID!): User
   }
 `;
 
