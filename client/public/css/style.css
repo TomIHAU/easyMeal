@@ -70,7 +70,9 @@ body {
   color: var(--offGrey);
   font: normal 75% Arial, Helvetica, sans-serif;
 }
-
+.navLogo {
+  height: 56px;
+}
 .navBar {
   color: black;
   background-color: var(--maincolor);
@@ -252,7 +254,6 @@ body {
   width: 50px;
   color: #000;
   font-size: 30px;
-  border-radius: 0 0 5px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -283,6 +284,20 @@ body {
   width: 50%;
   padding: 15px;
 }
+.directionBtn {
+  height: 50px;
+  width: 50px;
+  background-color: var(--mainback);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.directionBtn:hover {
+  background-color: var(--maincolor);
+  color: white;
+}
 .ourRangeOuter {
   height: 100%;
   width: 100%;
@@ -304,6 +319,7 @@ body {
 }
 .ourRangeSF {
   display: flex;
+  justify-content: end;
 }
 .mealsContainer {
   display: flex;
@@ -642,10 +658,10 @@ body {
 select {
   -webkit-appearance: none;
   padding: 7px 40px 7px 12px;
-  max-height: 50px;
+  height: 50px;
   width: 200px;
   border: 1px solid #e8eaed;
-  border-radius: 5px;
+  border-radius: 0 0 0 5px;
   background-color: white;
   box-shadow: 0 1px 3px -2px #9098a9;
   cursor: pointer;

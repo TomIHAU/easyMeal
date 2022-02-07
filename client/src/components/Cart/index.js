@@ -10,6 +10,7 @@ import Auth from "../../utils/auth";
 import {
   TOGGLE_CART,
   ADD_MULTIPLE_TO_CART,
+  CLEAR_CART,
 } from "../../utils/GlobalState/actions";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -46,7 +47,9 @@ const Cart = () => {
   function toggleCart() {
     dispatch({ type: TOGGLE_CART });
   }
-
+  function clearCart() {
+    dispatch({ type: CLEAR_CART });
+  }
   function calculateTotal() {
     let sum = 0;
     state.cart.forEach((item) => {
@@ -93,17 +96,17 @@ const Cart = () => {
       <div className="close" onClick={toggleCart}>
         <AiOutlineClose style={{ cursor: "pointer" }} />
       </div>
+      <button className="mainBannerBtn clearBtn" onClick={clearCart}>
+        Clear Cart
+      </button>
       <h2>Your Cart</h2>
       {state.cart.length ? (
         <div>
-          {console.log(state.cart)}
           {state.cart.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
 
           <div className="flex-row checkoutBtnCont">
-            <strong>Total: ${calculateTotal()}</strong>
-
             {Auth.loggedIn() ? (
               <button
                 className="mainBannerBtn checkoutBtn"
@@ -114,6 +117,7 @@ const Cart = () => {
             ) : (
               <Link to="/login"> log in to check out!</Link>
             )}
+            <strong>Total: ${calculateTotal()}</strong>
           </div>
         </div>
       ) : (

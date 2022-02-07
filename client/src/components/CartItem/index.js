@@ -40,9 +40,14 @@ const CartItem = ({ item }) => {
       <div className="cartItem">
         <img src={`${item.img}`} alt="" />
       </div>
-      <div>
-        <div>
-          {item.mealName} ${item.price}
+      <div className="cartDetails">
+        <div className="cartNamePrice">
+          <div>
+            <p>{item.mealName}</p>
+          </div>
+          <div>
+            <p>${item.price}</p>
+          </div>
         </div>
         <div className="cartQty">
           <span>Qty:</span>
