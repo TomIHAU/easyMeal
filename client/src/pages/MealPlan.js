@@ -28,17 +28,24 @@ function calculateDayTotal(arr, key, meals) {
 export default function MealPlan() {
   const { loading, data } = useQuery(QUERY_MEALS);
   const state = useSelector((state) => state);
+
   const dispatch = useDispatch();
   const { planId } = useParams();
   const [showBanner, setShowBanner] = useState(true);
 
   function resetPlan() {
-    console.log("planReset????", plans[0]);
-    dispatch({ type: NEW_DAY_PLAN, plan: plans[0] });
+    dispatch({
+      type: NEW_DAY_PLAN,
+      plan: JSON.parse(JSON.stringify(plans[0])),
+    });
   }
+
   useEffect(() => {
     if (planId) {
-      dispatch({ type: NEW_DAY_PLAN, plan: plans[planId] });
+      dispatch({
+        type: NEW_DAY_PLAN,
+        plan: JSON.parse(JSON.stringify(plans[planId])),
+      });
     }
   }, [dispatch, planId]);
 
