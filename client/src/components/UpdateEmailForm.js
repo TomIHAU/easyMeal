@@ -3,12 +3,9 @@ import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 import { EDIT_EMAIL } from "../utils/mutations";
 
-export default function UpdateEmailForm({
-  setAddressState,
-  setShowShippingForm,
-}) {
+export default function UpdateEmailForm({ setEmail, setShowUpdateForm }) {
   const [formState, setFormState] = useState({ email: "" });
-  const [addAddress, addAddressRes] = useMutation(EDIT_EMAIL);
+  const [addEmail, addEmailRes] = useMutation(EDIT_EMAIL);
 
   const me = Auth.getProfile();
   const handleFormChange = (event) => {
@@ -22,43 +19,34 @@ export default function UpdateEmailForm({
     event.preventDefault();
     console.log(formState.email, me.data.id);
     try {
-      const mutationResponse = await addAddress({
+      const mutationResponse = await addEmail({
         variables: {
-          postcode: parseInt(formState.postcode),
-          street: formState.street,
+          email: formState.email,
           user_id: me.data.id,
         },
       });
-      setAddressState(mutationResponse.data.addUserAddress.address);
-      setShowShippingForm(false);
+      setEmail(mutationResponse.data.editEmail.email);
+      setShowUpdateForm(false);
     } catch (e) {
       console.log(e);
     }
   };
+
   return (
     <div className="formCover">
       <form
-        className="shippingForm"
-        id="shippingFrom"
+        className="shippingFrom EmailForm"
+        id="EmailForm"
         onSubmit={handleFormSubmit}
       >
-        <h2>Enter Your Address</h2>
-        <label htmlFor="street">Street</label>
+        <h2>Enter Your New Email</h2>
+        <label htmlFor="street">Email</label>
         <input
-          type="text"
-          placeholder="Enter your address"
+          type="email"
+          placeholder="Enter your new email"
           autoComplete="off"
-          name="street"
-          value={formState.street}
-          onChange={handleFormChange}
-        />
-        <label htmlFor="postcode">Postcode</label>
-        <input
-          type="text"
-          placeholder="Enter your postcode"
-          autoComplete="off"
-          name="postcode"
-          value={formState.postcode}
+          name="email"
+          value={formState.email}
           onChange={handleFormChange}
         />
 

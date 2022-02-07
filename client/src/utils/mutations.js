@@ -65,6 +65,7 @@ export const EDIT_EMAIL = gql`
   mutation editEmail($user_id: ID!, $email: String!) {
     editEmail(user_id: $user_id, email: $email) {
       username
+      email
       address {
         street
         postcode

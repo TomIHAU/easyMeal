@@ -78,13 +78,25 @@ export default function Dash() {
         <div className="myDashDetails">
           <h2>My Details</h2>
           <div className="myDashSec">
-            {showUpdateForm && <UpdateEmailForm />}
+            {showUpdateForm && (
+              <UpdateEmailForm
+                setEmail={setEmail}
+                setShowUpdateForm={setShowUpdateForm}
+              />
+            )}
             <h3>Contact Information</h3>
             <p>
               <strong>Email: </strong>
               {email}
             </p>
-            <button className="mainBannerBtn dashBtn">Edit Contact Info</button>
+            <button
+              className="mainBannerBtn dashBtn"
+              onClick={() => {
+                setShowUpdateForm(!showUpdateForm);
+              }}
+            >
+              Edit Contact Info
+            </button>
           </div>
           <div className="myDashSec">
             {showShippingForm && (
