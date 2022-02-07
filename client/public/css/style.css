@@ -629,6 +629,29 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+.myDashSec {
+  border-bottom: 1px solid #808080;
+  padding: 8px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dashOrders {
+  padding: 8px;
+}
+.dashOrders h2 {
+  padding: 10px;
+}
+.dashBtn {
+  width: 200px;
+  padding: 4px 8px;
+}
+.dashBtnGroup {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 .anOrder {
   font-size: 14px;
   margin: 5px;

@@ -24,7 +24,6 @@ export default function Dash() {
   }
 
   if (error) return `Error! ${error.message}`;
-
   return (
     <div className="about">
       <button
@@ -37,9 +36,37 @@ export default function Dash() {
       <div className="dashHeader">
         <h1>Welcome {me.data.username}</h1>
       </div>
+
       <div className="mainDash">
+        <div className="myDashDetails">
+          <h2>My Details</h2>
+          <div className="myDashSec">
+            <h3>Contact Information</h3>
+            <p>
+              <strong>Email: </strong>
+              {me.data.email}
+            </p>
+            <button className="mainBannerBtn dashBtn">Edit Contact Info</button>
+          </div>
+          <div className="myDashSec">
+            <h3>Default Shipping Information</h3>
+            {me.data.address ? (
+              <div>hello</div>
+            ) : (
+              <h3>no Information provided</h3>
+            )}
+            <div className="dashBtnGroup">
+              <button className="mainBannerBtn dashBtn">
+                Edit Shipping Info
+              </button>
+              <button className="mainBannerBtn dashBtn">
+                Remove Shipping Info
+              </button>
+            </div>
+          </div>
+        </div>
         {myPurchases.length ? (
-          <div>
+          <div className="dashOrders">
             <h2>Current Orders:</h2>
             <div className="myPurchases">
               {myPurchases.map((purchase) => {
