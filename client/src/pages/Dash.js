@@ -12,18 +12,27 @@ export default function Dash() {
   const [myPurchases, setMyPurchases] = useState([]);
 
   const [showShippingForm, setShowShippingForm] = useState(false);
-
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [removeAddress, removeAddressRes] = useMutation(REMOVE_ADDRESS);
-  const [addressState, setAddressState] = useState();
+
+  const [addressState, setAddressState] = useState("");
+  console.log(addressState);
   const { data, loading, error } = useQuery(QUERY_USER_PURCHASES, {
     variables: { user_id: me.data.id },
   });
+
   const user = useQuery(QUERY_ONE_USERS, {
     variables: { id: me.data.id },
   });
-  if (user.address) {
-    setAddressState(user.address);
-  }
+
+  useEffect(() => {
+    if (
+      user?.data?.user?.address &&
+      (user?.data?.user?.address === addressState || !addressState)
+    ) {
+      setAddressState(user.data.user.address);
+    }
+  }, [user]);
 
   const handleRemoveAddress = async (event) => {
     event.preventDefault();
@@ -82,9 +91,10 @@ export default function Dash() {
             )}
             <h3>Default Shipping Information</h3>
             {addressState ? (
-              <div>
-                Shipping Address: {addressState.street}
-                {addressState.postcode}
+              <div className="shownAddress">
+                <p>Shipping Address: </p>
+                <p>{addressState.street}</p>
+                <p>{addressState.postcode}</p>
               </div>
             ) : (
               <h3>no Information provided</h3>

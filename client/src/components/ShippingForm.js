@@ -31,32 +31,36 @@ export default function ShippingForm({ setAddressState, setShowShippingForm }) {
     }
   };
   return (
-    <form
-      className="shippingFrom"
-      id="shippingFrom"
-      onSubmit={handleFormSubmit}
-    >
-      <h2>Enter Your Address</h2>
-      <input
-        type="street"
-        placeholder="Enter your address"
-        autoComplete="off"
-        name="street"
-        value={formState.street}
-        onChange={handleFormChange}
-      />
-      <input
-        type="postcode"
-        placeholder="Enter your postcode"
-        autoComplete="off"
-        name="postcode"
-        value={formState.postcode}
-        onChange={handleFormChange}
-      />
+    <div className="formCover">
+      <form
+        className="shippingForm"
+        id="shippingFrom"
+        onSubmit={handleFormSubmit}
+      >
+        <h2>Enter Your Address</h2>
+        <label htmlFor="street">Street</label>
+        <input
+          type="text"
+          placeholder="Enter your address"
+          autoComplete="off"
+          name="street"
+          value={formState.street}
+          onChange={handleFormChange}
+        />
+        <label htmlFor="postcode">Postcode</label>
+        <input
+          type="text"
+          placeholder="Enter your postcode"
+          autoComplete="off"
+          name="postcode"
+          value={formState.postcode}
+          onChange={handleFormChange}
+        />
 
-      <button type="submit" id="btn-sign">
-        SUBMIT
-      </button>
-    </form>
+        <button type="submit" id="btn-sign">
+          SUBMIT
+        </button>
+      </form>
+    </div>
   );
 }
