@@ -16,6 +16,7 @@ import FilterForm from "../components/FilterForm";
 import SingleMenuMeal from "../components/SingleMenuMeal";
 import MoreDetailsMeal from "../components/MoreDetailsMeal";
 import { useParams } from "react-router-dom";
+import SortDirectionComp from "../components/SortDirectionComp";
 
 function filterResults(arr, args) {
   return arr.filter((ele) => {
@@ -64,9 +65,7 @@ export default function OurRange() {
       ? setSearchResults(sorted)
       : setSearchResults(sorted.reverse());
   }, [state.sort, state.filters, state.meals, sortDirection]);
-  function handleSortDirection() {
-    setSortDirection(!sortDirection);
-  }
+
   const { cart } = state;
   const addToCart = (meal) => {
     const itemInCart = cart.find((cartItem) => cartItem.id === meal.id);
@@ -107,20 +106,11 @@ export default function OurRange() {
       <div className="ourRange">
         <h2 className="ourRangeHeader">Our Range of Meals</h2>
         <div className="ourRangeSF">
-          <FilterForm /> <SortSelect />
-          <div className="directionBtn" onClick={handleSortDirection}>
-            {sortDirection ? (
-              <div>
-                <BsChevronDown />
-                Low to High
-              </div>
-            ) : (
-              <div>
-                <BsChevronUp />
-                High to Low
-              </div>
-            )}
-          </div>
+          <SortSelect />
+          <SortDirectionComp
+            sortDirection={sortDirection}
+            setSortDirection={setSortDirection}
+          />
         </div>
         <div>
           <div className="mealsContainer">
