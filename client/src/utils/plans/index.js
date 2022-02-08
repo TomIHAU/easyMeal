@@ -33,7 +33,7 @@ export const planBanner = [
   {
     background: "/img/bannerHealth.jpg",
     title: "Health Kick",
-    desc: "This diet will set you on the right path of happiness and healthiness. Purging you of all the lorem ipsum that you have got from doing a web dev coarse. Truly amazing.",
+    desc: "This diet will set you on the right path of happiness and healthiness. Purging you of all the lorem ipsum that you have got from doing a web dev course. Truly amazing.",
   },
   {
     background: "/img/bannerMuscle.jpg",
