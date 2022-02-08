@@ -15,7 +15,7 @@ export default function MoreDetailsMeal({ mealId, setMoreDetails, addToCart }) {
   }
 
   return (
-    <div>
+    <div className="mealEnhanceCont">
       <div className="mealEnhance">
         <div className="mealEnhanceInner">
           <div className="enhanceHead">
@@ -45,23 +45,23 @@ export default function MoreDetailsMeal({ mealId, setMoreDetails, addToCart }) {
                 <table>
                   <tr>
                     <td>Fat, Total</td>
-                    <td>{enhance.fat}</td>
+                    <td>{enhance.fat}g</td>
                   </tr>
                   <tr>
                     <td>Fat, Saturated</td>
-                    <td>{enhance.fat - 2}</td>
+                    <td>{enhance.fat - 2}g</td>
                   </tr>
                   <tr>
                     <td>Carbs</td>
-                    <td>{enhance.carbs}</td>
+                    <td>{enhance.carbs}g</td>
                   </tr>
                   <tr>
                     <td>Sugars</td>
-                    <td>{enhance.carbs - 1}</td>
+                    <td>{enhance.carbs - 1}g</td>
                   </tr>
                   <tr>
                     <td>Protein</td>
-                    <td>{enhance.protein}</td>
+                    <td>{enhance.protein}g</td>
                   </tr>
                   <tr>
                     <td>Sodium</td>

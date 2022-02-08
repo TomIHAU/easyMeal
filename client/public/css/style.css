@@ -699,7 +699,12 @@ body {
   right: 0;
   border-radius: 0 0 0 6px;
 }
+.mealEnhanceCont {
+  display: flex;
+  justify-content: center;
+}
 .mealEnhance {
+  max-width: 1000px;
   margin: 30px;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 }
